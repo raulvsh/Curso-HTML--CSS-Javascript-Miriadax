@@ -1,0 +1,107 @@
+@charset "utf-8";
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('onts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+	font-family: 'Glyphicons Halflings';
+}
+body {
+	padding:0;
+	margin:0;
+}
+.container {
+    display: grid;
+    grid-gap: 1rem; 
+    grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto;
+}
+.header {
+    grid-column: span 12;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #19191B;
+}
+.card {
+	font-family: 'Merriweather', serif;
+	box-shadow: 3px 5px 28px 0px rgba(0,0,0,0.75);
+    grid-column: span 3;
+}
+.card img {
+	width:100%;
+	height:auto;
+}
+.card .textos {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	padding-bottom: 0.5rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #FFF;	
+}
+.textos h1 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: calc(1.3em + 1vw);
+	font-weight: 300;
+	margin-top: 0;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #19191B;
+}
+.textos a {
+	color:red;
+	text-decoration:none;
+}
+
+
+.menu {
+    grid-column: span 12;
+	padding-bottom:5px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #19191B;
+}
+.menu ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 3px;
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.menu li {
+
+}
+.menu li a {
+	font-family: 'Open Sans', sans-serif;
+	display: block;
+	padding: 0.5em;
+	color: red;
+	background-color: #E1DFDF;
+	text-decoration: none;
+	text-align: center;
+	white-space: nowrap;
+	text-transform: uppercase;
+}
+.menu li a:hover {
+	color: white;
+	background-color: #F73830;
+}
+.footer {
+	grid-column: span 12;
+	font-family: 'Open Sans', sans-serif;
+	color: #F0F0F0;
+	background-color: #9A240A;
+	padding: 0.3em;
+	font-size: calc(0.5em + 0.4vw);
+}
+@media (orientation: portrait) {
+.card {
+    grid-column: span 6;
+}
+.container ul {
+	grid-template-columns: 1fr;
+}
+}

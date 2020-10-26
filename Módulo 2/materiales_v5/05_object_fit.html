@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Object-fit</title>
+<style>
+h2 {
+  font-family: Courier New, monospace;
+  font-size: 1em;
+  margin: 1em 0 0.3em;
+}
+div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  height: 940px;
+}
+img {
+  width: 200px;
+  height: 100px;
+  border: 1px solid #000;
+}
+.narrow {
+  width: 100px;
+  height: 200px;
+  margin-top: 10px;
+}
+.fill {
+  object-fit: fill;
+}
+.contain {
+  object-fit: contain;
+}
+.cover {
+  object-fit: cover;
+}
+.none {
+  object-fit: none;
+}
+.scale-down {
+  object-fit: scale-down;
+}
+</style>
+</head>
+
+<body>
+<!-- MDN: https://developer.mozilla.org/es/docs/Web/CSS/object-fit -->
+
+<div>
+  <p>object-fit: fill</p>
+  <img src="images/w_01.jpg" class="fill"/>
+  <img src="images/w_01.jpg" class="fill narrow"/>
+
+  <p>object-fit: contain</p>
+  <img src="images/w_02.jpg" class="contain"/>
+  <img src="images/w_02.jpg" class="contain narrow"/>
+
+  <p>object-fit: cover</p>
+  <img src="images/w_06.jpg" class="cover"/>
+  <img src="images/w_06.jpg" class="cover narrow"/>
+
+  <p>object-fit: none</p>
+  <img src="images/w_09.jpg" class="none"/>
+  <img src="images/w_09.jpg" class="none narrow"/>
+
+  <p>object-fit: scale-down</p>
+  <img src="images/w_16.jpg" class="scale-down"/>
+  <img src="images/w_16.jpg" class="scale-down narrow"/>
+
+</div>
+</body>
+</html>

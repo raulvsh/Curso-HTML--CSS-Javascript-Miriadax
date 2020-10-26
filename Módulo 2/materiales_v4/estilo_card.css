@@ -1,0 +1,66 @@
+@charset "utf-8";
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('onts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+	font-family: 'Glyphicons Halflings';
+}
+.caja {
+	display:grid;
+	grid-gap: 1rem;
+	padding:1rem;
+}
+.card {
+	font-family: 'Merriweather', serif;
+	box-shadow: 3px 5px 28px 0px rgba(0,0,0,0.75);
+}
+.card img {
+	width:100%;
+	height:auto;
+}
+.card .textos {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	padding-bottom: 0.5rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #FFF;	
+}
+.textos h1 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.6rem;
+	font-weight: 300;
+	margin-top: 0;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #19191B;
+}
+.textos p {
+	font-size:0.8rem;
+}
+.textos a {
+	font-size:0.8rem;
+	color:red;
+	text-decoration:none;
+}
+.textos a:hover {
+	text-decoration: underline;
+}
+@media (orientation: portrait) {
+.caja {
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto;
+}
+	
+}
+@media (orientation: landscape) {
+.caja {
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto;
+
+}
+	
+}

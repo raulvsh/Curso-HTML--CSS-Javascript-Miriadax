@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GRID 3x3</title>
+<style>
+body {
+	padding:0;
+	margin:0;
+}
+.container {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    grid-template-rows: 10vh 80vh 10vh;
+}
+.container div {
+	border:solid 1px red;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;	
+}
+.header {
+    grid-column: 2 / 4;
+}
+.menu {
+    grid-row: 1 / 4;
+}
+.content {
+    grid-column: 2 / 4;
+}
+.footer {
+    grid-column: 2 / 4;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="header">HEADER</div>
+	<div class="menu">MENU</div>
+	<div class="content">CONTENT</div>
+	<div class="footer">FOOTER</div>
+</div>
+    </body>
+</html>
+

@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+body, html {
+	height:100%;
+	padding:0;
+	margin:0;
+}
+.caja {
+	display:flex;
+	height:33vh;
+	flex-wrap: wrap;
+	box-sizing:border-box;
+}
+.card {
+	box-sizing:border-box;
+	width:33%;
+	height:33vh;
+	position:relative;
+	background-color:black;
+	
+}
+.linea{
+	border-top: 1px solid white;
+	width:2em;
+	display:block;
+	margin-bottom:0.2em;
+	transition:all 1s;
+}
+.texto {
+	color:white;
+	font-family: 'Oswald', sans-serif;
+	position:absolute;
+	bottom:0;
+	left:0;
+	
+}
+p {
+	padding-left:1em;
+	padding-bottom:0.5em;
+	margin:0;
+}
+.card p span {
+	font-size:0.8em;
+	font-weight:400;
+	opacity:0;
+	transition:all 1s;
+}
+.card:hover p span {
+	opacity:1;
+} 
+.card:hover img{
+	opacity:1;
+}
+.card:hover .linea{
+	width:100%;
+	margin-left:1em;
+}
+.caja {
+	
+}
+.card img {
+	object-fit: cover;
+	width: 100%;
+	height: 33vh;
+	opacity:0.3;
+	transition:all 1s;
+}
+

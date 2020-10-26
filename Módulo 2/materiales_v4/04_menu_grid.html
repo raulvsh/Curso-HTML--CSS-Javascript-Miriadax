@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>menu grid</title>
+<style>
+.container ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 3px;
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.container li {
+	border:solid 1px red;
+}
+.container li a {
+	display:block;
+	padding:1em;
+	color: red;
+	text-decoration:none;
+	text-align:center;
+	white-space: nowrap;
+}
+.container li a:hover {
+	color: white;
+	background-color:red;
+
+}
+@media (orientation: portrait) {
+.container ul {
+	grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+
+<body>
+<html>
+    <head>
+        <link rel="stylesheet" href="basic.css">
+        <style>
+        </style>
+    </head>
+    <body>
+    <nav  class="container">
+        <ul>
+            <li><a href="#">Opción 1</a></li>
+            <li><a href="#">Opción 2</a></li>
+            <li><a href="#">Opción 3</a></li>
+            <li><a href="#">Opción 4</a></li>
+            <li><a href="#">Opción 5</a></li>           
+        </ul>
+        </nav>
+    </body>
+</html>
+</body>
+</html>
