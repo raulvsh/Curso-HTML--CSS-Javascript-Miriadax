@@ -1,9 +1,14 @@
 body {
-    font-family: 'Telefonica Headline Light','Segoe UI','Calibri Light', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  h1{
-    font-weight: bold;
-  }
-  
-  
-  
+  font-family: "Telefonica Headline Light", "Calibri Light", Tahoma, Geneva,
+    Verdana, sans-serif;
+  margin: 1em;
+}
+h1 {
+  font-weight: bold;
+}
+h2 {
+  font-size: 16px;
+}
+h3 {
+  font-size: 14px;
+}
