@@ -1,3 +1,72 @@
-h1{
-    color: red;
+h1 {
+  color: red;
+}
+.container {
+  background-color: beige;
+  margin: 2em;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 1024px;
+  grid-template-rows: 50px 200px 50px;
+  grid-template-areas:
+    " h   h   h   h   h   h   h   h   h   h   h   h"
+    "nav nav art art art art art art art art asi asi"
+    " f   f   f   f   f   f   f   f   f   f   f   f";
+}
+header {
+  grid-area: h;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+nav {
+  grid-area: nav;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+article {
+  grid-area: art;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: teal;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+aside {
+  grid-area: asi;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: turquoise;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+footer {
+  grid-area: f;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
 }
