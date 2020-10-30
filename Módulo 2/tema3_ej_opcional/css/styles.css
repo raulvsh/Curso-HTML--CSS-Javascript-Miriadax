@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Fira Sans";
+  src: url(fonts/FiraSans-Medium.ttf) format("truetype");
+}
+p {
+  font-family: "Fira Sans";
+}
+
+h2 {
+  font-family: "Syne Tactile", cursive;
+}
