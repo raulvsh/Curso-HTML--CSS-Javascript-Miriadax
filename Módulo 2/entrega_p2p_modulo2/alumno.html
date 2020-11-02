@@ -1,22 +1,69 @@
 <html>
-<head><title>HTML/CSS Alumno</title><meta charset="utf-8">
-<link href="estilo_alumno.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<nav>
-  <ul>
-	<li><a href="index.html">INICIO</a></li>
-	<li><a href="alumno.html">ALUMNO</a></li>
-	<li><a href="#">EJEMPLO 1</a></li>
-	<li><a href="#">EJEMPLO 2</a></li>
-  </ul>
-</nav>
-<section>
-  <article>
-  </article>
-  <aside> 
-  </aside>
-</section>
-<footer>&copy; Nombre del Alumno</footer>
-</body>
+  <head>
+    <title>HTML/CSS Ra&uacute;l Velasco</title>
+    <meta charset="utf-8" />
+    <link href="estilo_alumno.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../Web principal/css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="alumno.html">ALUMNO</a></li>
+        <li>
+          <a
+            href="curso_html.html"
+            title="Curso de introducción a HTML5"
+            >CURSO HTML5</a
+          >
+        </li>
+        <li>
+          <a href="curso_css.html" title="Curso CSS desde cero"
+            >CURSO CSS</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <section>
+      <article>
+        <!--Este vídeo no se verá al subirlo a Neocities, pero se deja el código correcto-->
+        <video class="videoTercio" controls preload>
+          <source src="video/MOOC.mp4" type='video/mp4; codecs="avc1,mp4a"' />
+          <source
+            src="video/MOOC.ogv"
+            type='video/ogg;
+          codecs="theora,vorbis"'
+          />
+          <source src="video/MOOC.mov" type='video/mov; codecs="mov"' />
+          <source
+            src="video/MOOC.webm"
+            type='video/webm; codecs="vp8, vorbis"'
+          />
+        </video>
+        <iframe class="iframeTercio"
+          src="https://miriadax.net/web/html5mooc"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+
+        <iframe class="iframeTercio"
+          src="https://www.youtube.com/embed/qSkf0C2Fi5Y"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </article>
+      <aside></aside>
+    </section>
+    <footer class="footerBtn">
+      <a
+        href="../../Web principal/index.html"
+        class="btnIndice"
+        data-toggle="tooltip"
+        title="Ver índice de la web"
+        >Ir a índice</a
+      >
+    </footer>
+    <footer>&copy; Raúl Velasco Salinas - 2020</footer>
+  </body>
 </html>

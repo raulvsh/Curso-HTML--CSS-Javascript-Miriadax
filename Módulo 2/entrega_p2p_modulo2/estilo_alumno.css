@@ -1,2 +1,81 @@
 @charset "utf-8";
 /* CSS Document */
+@font-face {
+  font-family: "Open Sans";
+  src: url(../fonts/OpenSans-Regular.ttf) format("truetype");
+}
+body,
+html {
+  width: 100% !important;
+}
+nav {
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 0.1em;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  flex-grow: 1;
+}
+nav a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  transition: all 0.5s;
+  padding: 1em;
+  text-align: center;
+
+  border: solid 1px #424242;
+}
+nav a:hover {
+  background-color: #4fc3f7;
+}
+article{
+    padding-top: 5px;
+}
+
+
+.videoTercio {
+  width: 95%;
+  height: 300px;
+
+}
+.iframeTercio {
+  height: 300px;
+  width: 95%;
+}
+@media (orientation: landscape) {
+  nav ul {
+    flex-direction: row;
+  }
+  a {
+    margin-right: 0.2em;
+  }
+  article {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+  }
+}
+
+@media (orientation: portrait) {
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav a {
+    margin-bottom: 0.2em;
+  }
+}
