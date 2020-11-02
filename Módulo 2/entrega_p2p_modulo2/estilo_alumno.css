@@ -35,19 +35,23 @@ nav a {
 nav a:hover {
   background-color: #4fc3f7;
 }
-article{
-    padding-top: 5px;
+article {
+  padding-top: 5px;
 }
-
 
 .videoTercio {
   width: 95%;
   height: 300px;
-
 }
 .iframeTercio {
   height: 300px;
   width: 95%;
+}
+
+.iframeFullScreen {
+
+  width: 100%;
+  height: 500px;
 }
 @media (orientation: landscape) {
   nav ul {
@@ -68,7 +72,6 @@ article{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
-
   }
 
   nav ul {
