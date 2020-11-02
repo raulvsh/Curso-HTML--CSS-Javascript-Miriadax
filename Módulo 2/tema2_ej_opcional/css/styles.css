@@ -59,7 +59,7 @@ aside {
   justify-content: center;
 }
 
-footer {
+.footerNormal {
   grid-area: f;
   border-style: solid;
   border-color: black;
