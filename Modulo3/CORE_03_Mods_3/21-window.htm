@@ -1,0 +1,27 @@
+
+<!DOCTYPE html><html>
+    <head>
+      <title>Ejemplo</title>
+      <meta charset="utf-8">
+      <style>
+        span {font-weight: bold}
+      </style>
+    </head>
+    <body>
+      <h1>Propiedades de window</h1>
+    
+      La propiedad <span>location.href</span> contiene el URL:<br>
+      <span id="i1"></span>  <br><br>
+      Pixeles <span>(screen.width x screen.height)</span> de mi pantalla: 
+      <span id="i2"></span>
+      
+      <script type="text/javascript">
+      document.getElementById("i1").innerHTML = location.href;
+    
+      let p = document.getElementById("i2");
+      p.innerHTML = `${screen.width} x ${screen.height}`;
+      </script>
+    </body>
+    </html>
+    
+    
