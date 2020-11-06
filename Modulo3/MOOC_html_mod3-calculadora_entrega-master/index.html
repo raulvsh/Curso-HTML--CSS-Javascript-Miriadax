@@ -17,19 +17,7 @@
         let num = document.getElementById("pantalla");
         num.value = num.value * num.value;
       };
-      function vaciar() {
-        document.getElementById("n1").value = "";
-      }
 
-      function cuadrado() {
-        let num = document.getElementById("n1");
-        num.value = num.value * num.value;
-      }
-
-      function cubo() {
-        let num = document.getElementById("n1");
-        num.value = num.value ** 3;
-      }
     </script>
   </head>
   <body>
@@ -39,9 +27,7 @@
       <input type="text" id="pantalla" onclick="vaciar()" /><br /><br />
       <div class="filaOps">
         <button id="cuadrado" onclick="cuadrado()">x<sup>2</sup></button>
-        <button onclick="cubo()">x<sup>3</sup></button>
-
-        <button onclick="inverso()">1/x</button>
+  
       </div>
     </div>
   </body>
