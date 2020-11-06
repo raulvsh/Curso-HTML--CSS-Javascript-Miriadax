@@ -16,16 +16,30 @@
       const cuadrado = () => {
         let num = document.getElementById("pantalla");
         num.value = num.value * num.value;
+        let mensaje = document.getElementById("informacion");
+        if(num.value<100){
+          mensaje.innerHTML="menor";
+        }else{
+                mensaje.innerHTML="mayor";
+        }
       };
 
-    </script>
+      const modulo = ()=>{
+        let num = document.getElementById("pantalla");
+        if(num.value<0){
+          num.value=-num.value;
+        }
+
+      }
+
+    </script> 
   </head>
   <body>
     <div class="calcCompleta">
       <h1>Calculadora completa</h1>
       Número:
       <input type="text" id="pantalla" onclick="vaciar()" /><br /><br />
-      <p>Info sobre el número</p>
+      <p id="informacion">Info sobre el número</p>
 
       <p>Operaciones unitarias</p>
       <div class="filaOps">
