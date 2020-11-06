@@ -1,0 +1,32 @@
+body {
+  font-family: "Lato";
+  display: block;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  align-content: center;
+  justify-self: center;
+}
+.calcCompleta {
+  border: solid 1px black;
+  width: 30vw;
+  background-color: #d8d8d8;
+  padding: 2em;
+
+}
+
+button{
+    background-color:#f2f2f2;
+    width: 5em;
+    height: 5em;
+    border-style: none;
+    margin: 0.1em;
+}
+button:hover{
+    background-color: #b6b6b6;
+}
+input{
+    border-style: none;
+    background-color:#f2f2f2;
+    width: 11em;
+    height: 2em;
+}
