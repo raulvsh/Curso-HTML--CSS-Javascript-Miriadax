@@ -17,30 +17,32 @@ body {
   padding: 2em;
   margin-right: auto;
   margin-left: auto;
-
 }
-input{
-    border-style: none;
-    background-color:#fafbfc;
-    width: 11em;
-    height: 2em;
-    border-radius: 0.5em;
-
+input {
+  border-style: none;
+  background-color: #fafbfc;
+  width: 11em;
+  height: 2em;
+  border-radius: 0.5em;
 }
-input:hover{
-    background-color: #d6dae0;
+input:hover {
+  background-color: #d6dae0;
 }
 
-button{
-    background-color:#fafbfc;
-    width: 4.5em;
-    height: 4.5em;
-    border-style: none;
-    margin: 0.1em;
-    border-radius: 0.5em;
-
+button {
+  background-color: #fafbfc;
+  width: 4.5em;
+  height: 4.5em;
+  border-style: none;
+  margin: 0.1em;
+  border-radius: 0.5em;
 }
-button:hover{
-    background-color: #d6dae0;
+button:hover {
+  background-color: #d6dae0;
 }
 
+#cuadrado,
+#modulo,
+#sumatorio {
+  background-color: greenyellow;
+}
