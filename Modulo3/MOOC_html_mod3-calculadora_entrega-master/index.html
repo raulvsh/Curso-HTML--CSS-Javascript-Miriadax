@@ -25,10 +25,31 @@
       <h1>Calculadora completa</h1>
       Número:
       <input type="text" id="pantalla" onclick="vaciar()" /><br /><br />
+      <p>Info sobre el número</p>
+
+      <p>Operaciones unitarias</p>
       <div class="filaOps">
         <button id="cuadrado" onclick="cuadrado()">x<sup>2</sup></button>
-  
+        <button id="modulo" onclick="modulo()">Mod</sup></button>
+        <button id="factorial" onclick="factorial()">n!</button>
       </div>
+
+      <p>Operaciones binarias</p>
+      <div class="filaOps">
+        <button id="mas" onclick="mas()">+</button>
+        <button id="por" onclick="por()">*</button>
+        <button id="igual" onclick="igual()">Igual</button>
+      </div>
+
+      <p>Operaciones en formato CSV</p>
+      <div class="filaOps">
+        <button id="sumatorio" onclick="sumatorio()">Σx</button>
+        <button id="ordenar" onclick="ordenar()">Ordenar</button>
+        <button id="revertir" onclick="revertir()">Revertir</button>
+        <button id="quitar" onclick="quitar()">Quitar</button>
+
+      </div>
+
     </div>
   </body>
 </html>
