@@ -42,7 +42,10 @@ button:hover {
 }
 
 #cuadrado,
+#factorial,
 #modulo,
+#ordenar,
+#revertir,
 #sumatorio {
   background-color: greenyellow;
 }

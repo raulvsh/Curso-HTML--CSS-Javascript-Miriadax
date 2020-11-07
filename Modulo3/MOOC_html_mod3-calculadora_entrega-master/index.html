@@ -16,51 +16,93 @@
       const cuadrado = () => {
         let num = document.getElementById("pantalla");
         num.value = num.value * num.value;
-        let mensaje = document.getElementById("informacion");
-        if(num.value<100){
-          mensaje.innerHTML="menor";
-        }else{
-                mensaje.innerHTML="mayor";
-        }
+        let mensaje = document.getElementById("info");
+        /*if (num.value < 100) {
+          mensaje.innerHTML = "menor";
+        } else {
+          mensaje.innerHTML = "mayor";
+        }*/
+        rellenar_info(num.value);
       };
 
-      const modulo = () => {
+      const mod = () => {
         let num = document.getElementById("pantalla");
-        if(num.value<0){
-          num.value=-num.value;
+        if (num.value < 0) {
+          num.value = -num.value;
         }
-      }
+        rellenar_info(num.value);
+      };
 
-      const sumatorio=()=>{
+      const fact = () => {
+        let num = document.getElementById("pantalla");
+        let factorial = 1;
+        if (num.value < 0) factorial = 0;
+
+        for (let i = num.value; i >= 1; i--) {
+          factorial *= i;
+        }
+        num.value = factorial;
+      };
+
+      const sumatorio = () => {
         let num = document.getElementById("pantalla");
         let lista = num.value.split(",");
-        let suma=0;
-        for(i=0; i<lista.length; i++){
-          suma+=+lista[i];
+        let suma = 0;
+        for (i = 0; i < lista.length; i++) {
+          suma += +lista[i];
         }
-        num.value=suma;
-      }
+        num.value = suma;
+        rellenar_info(num.value);
+      };
+
+      const ordenar = () => {
+        let num = document.getElementById("pantalla");
+        let lista = num.value.split(",");
+        num.value = lista.sort();
+      };
+      
+      const revertir = () => {
+        let num = document.getElementById("pantalla");
+        let lista = num.value.split(",");
+        num.value = lista.reverse();
+      };
+
+      const rellenar_info = (num) => {
+        let mensaje = document.getElementById("info");
+        mensaje.innerHTML = "Info: el resultado ";
+        if (num < 100) {
+          mensaje.innerHTML += "es menor que 100.";
+        } else if (num <= 200) {
+          mensaje.innerHTML += "está entre 100 y 200.";
+        } else {
+          mensaje.innerHTML += "es superior a 200";
+        }
+      };
     </script>
   </head>
   <body>
     <div class="calcCompleta">
-      <h1>Calculadora completa</h1>
+      <h1>Calculadora de CORE</h1>
       Número:
       <input type="text" id="pantalla" onclick="vaciar()" /><br /><br />
-      <p id="informacion">Info sobre el número</p>
+      <h2 id="info" class="grande" title="Info sobre el numero">
+        Información sobre el número
+      </h2>
 
       <p>Operaciones unitarias</p>
       <div class="filaOps">
         <button id="cuadrado" onclick="cuadrado()">x<sup>2</sup></button>
-        <button id="modulo" onclick="modulo()">Mod</button>
-        <button id="factorial" onclick="factorial()">n!</button>
+        <button id="modulo" onclick="mod()">Mod</button>
+        <button id="factorial" onclick="fact()">n!</button>
       </div>
 
       <p>Operaciones binarias</p>
       <div class="filaOps">
-        <button id="mas" onclick="mas()">+</button>
-        <button id="por" onclick="por()">*</button>
-        <button id="igual" onclick="igual()">Igual</button>
+        <button id="suma" onclick="suma()">+</button>
+        <button id="resta" onclick="resta()">-</button>
+        <button id="mult" onclick="mult()">*</button>
+        <button id="div" onclick="div()">/</button>
+        <button id="igual" onclick="igual()">=</button>
       </div>
 
       <p>Operaciones en formato CSV</p>
