@@ -1,0 +1,22 @@
+
+<!DOCTYPE html> 
+<html><head><meta charset="UTF-8">
+<script type="text/javascript">
+  // Comprobar si existe 'cuenta' en localStorage
+  let cuenta = localStorage.getItem('cuenta') || 0;
+  
+  // El contenedor 'cuenta' se crea y/o incrementa
+  localStorage.setItem('cuenta', ++cuenta);
+
+  // Evento inicial
+  document.addEventListener('DOMContentLoaded', 
+    () => document.getElementById('cuenta').innerHTML = cuenta
+  )
+</script>
+</head><body>
+  <h3>Ejemplo de localStorage</h3>
+
+  Número de visitas a esta página: <span id='cuenta'></span>!
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+
+<!DOCTYPE html> 
+<html><head><meta charset="UTF-8">
+<script type="text/javascript">
+  // si variable no existe se crea (primera visita)
+  localStorage.cuenta = (localStorage.cuenta || 0);
+
+  // incrementamos cuenta de visitas
+  let c = ++localStorage.cuenta;
+
+  // Evento inicial
+  document.addEventListener('DOMContentLoaded', 
+    () => document.getElementById('cuenta').innerHTML = c
+  )
+</script>
+</head><body>
+  <h3>Ejemplo de localStorage</h3>
+
+  Número de visitas a esta página: <span id='cuenta'></span>!
+</body>
+</html>
+
