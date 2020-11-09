@@ -33,6 +33,7 @@ const validarCSV = (lista) => {
   for (i = 0; i < lista.length; i++) {
     if (!validar(+lista[i])) {
       num.value = "Error";
+      rellenar_info(num.value);
       return false;
     }
   }
@@ -83,8 +84,10 @@ const operacionBinaria = (operacion) => {
   //Se guarda el número en la variable global
   if (validar(num.value)) {
     operandoA = +num.value;
+
   } else {
     num.value = "Error";
+    rellenar_info(num.value);
   }
   //Se guarda la operación en la variable global
   operador = operacion;
@@ -115,7 +118,10 @@ const eq = () => {
     }
   } else {
     num.value = "Error";
+
   }
+  rellenar_info(num.value);
+
 };
 
 /* OPERACIONES EN FORMATO CSV */
