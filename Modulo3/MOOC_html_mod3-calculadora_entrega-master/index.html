@@ -9,64 +9,12 @@
       rel="stylesheet"
     />
     <script type="text/javascript">
+      var operandoA = +0;
+      var operador = "";
+
+      /*FUNCIONES COMUNES*/
       const vaciar = () => {
         document.getElementById("pantalla").value = "";
-      };
-
-      const cuadrado = () => {
-        let num = document.getElementById("pantalla");
-        num.value = num.value * num.value;
-        let mensaje = document.getElementById("info");
-        /*if (num.value < 100) {
-          mensaje.innerHTML = "menor";
-        } else {
-          mensaje.innerHTML = "mayor";
-        }*/
-        rellenar_info(num.value);
-      };
-
-      const mod = () => {
-        let num = document.getElementById("pantalla");
-        if (num.value < 0) {
-          num.value = -num.value;
-        }
-        rellenar_info(num.value);
-      };
-
-      const fact = () => {
-        let num = document.getElementById("pantalla");
-        let factorial = 1;
-        if (num.value < 0) factorial = 0;
-
-        for (let i = num.value; i >= 1; i--) {
-          factorial *= i;
-        }
-        num.value = factorial;
-        rellenar_info(num.value);
-
-      };
-
-      const sumatorio = () => {
-        let num = document.getElementById("pantalla");
-        let lista = num.value.split(",");
-        let suma = 0;
-        for (i = 0; i < lista.length; i++) {
-          suma += +lista[i];
-        }
-        num.value = suma;
-        rellenar_info(num.value);
-      };
-
-      const ordenar = () => {
-        let num = document.getElementById("pantalla");
-        let lista = num.value.split(",");
-        num.value = lista.sort();
-      };
-      
-      const revertir = () => {
-        let num = document.getElementById("pantalla");
-        let lista = num.value.split(",");
-        num.value = lista.reverse();
       };
 
       const rellenar_info = (num) => {
@@ -76,8 +24,154 @@
           mensaje.innerHTML += "es menor que 100.";
         } else if (num <= 200) {
           mensaje.innerHTML += "está entre 100 y 200.";
-        } else {
+        } else if (num > 200) {
           mensaje.innerHTML += "es superior a 200";
+        } else {
+          mensaje.innerHTML += "es erróneo";
+        }
+      };
+
+      const validar = (value) => {
+        let num = document.getElementById("pantalla");
+
+        if (isNaN(value)) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+
+      /* OPERACIONES UNITARIAS */
+      const cuadrado = () => {
+        let num = document.getElementById("pantalla");
+        if (validar(num.value)) {
+          num.value = num.value * num.value;
+        } else {
+          num.value = "Error";
+        }
+        //num.value = num.value * num.value;
+        let mensaje = document.getElementById("info");
+        rellenar_info(num.value);
+      };
+
+      const mod = () => {
+        let num = document.getElementById("pantalla");
+        if (validar(num.value) && num.value < 0) {
+          num.value = -num.value;
+        } else if (validar(num.value) && num.value > 0) {
+          num.value = num.value;
+        } else {
+          num.value = "Error";
+        }
+        rellenar_info(num.value);
+      };
+
+      const fact = () => {
+        let num = document.getElementById("pantalla");
+        let factorial = 1;
+        if (validar(num.value)) {
+          if (num.value < 0) factorial = 0;
+
+          for (let i = num.value; i >= 1; i--) {
+            factorial *= i;
+          }
+          num.value = factorial;
+        } else {
+          num.value = "Error";
+        }
+
+        rellenar_info(num.value);
+      };
+
+      /* OPERACIONES BINARIAS */
+      const operacionBinaria = (operacion) => {
+        let num = document.getElementById("pantalla");
+        //Se guarda el número en la variable global
+        if (validar(num.value)) {
+          operandoA = +num.value;
+        } else {
+          num.value = "Error";
+        }
+        //Se guarda la operación en la variable global
+        operador = operacion;
+      };
+
+      const calcular = () => {
+        let num = document.getElementById("pantalla");
+        switch (operador) {
+          case "suma":
+            num.value = operandoA + +num.value;
+            break;
+          case "resta":
+            num.value = operandoA - +num.value;
+            break;
+          case "mult":
+            num.value = operandoA * +num.value;
+            break;
+          case "div":
+            num.value = operandoA / +num.value;
+            break;
+        }
+      };
+
+      /* OPERACIONES EN FORMATO CSV */
+      const sumatorio = () => {
+        let num = document.getElementById("pantalla");
+        let lista = num.value.split(",");
+        let suma = 0;
+        let error = false;
+        //hacer función validar lista
+        for (i = 0; i < lista.length; i++) {
+          if (validar(+lista[i])) {
+            suma += +lista[i];
+          } else {
+            error = true;
+            num.value = "Error";
+          }
+        }
+        if (!error) num.value = suma;
+        rellenar_info(num.value);
+      };
+
+      const ordenar = () => {
+        let num = document.getElementById("pantalla");
+        let lista = num.value.split(",");
+        let error = false;
+        for (i = 0; i < lista.length; i++) {
+          if (!validar(+lista[i])) {
+            error = true;
+            num.value = "Error";
+          }
+        }
+        if (!error) num.value = lista.sort((a, b) => a - b);
+      };
+
+      const revertir = () => {
+        let num = document.getElementById("pantalla");
+        let lista = num.value.split(",");
+        let error = false;
+        for (i = 0; i < lista.length; i++) {
+          if (!validar(+lista[i])) {
+            error = true;
+            num.value = "Error";
+          }
+        }
+        if (!error) num.value = lista.reverse();
+      };
+
+      const quitar = () => {
+        let num = document.getElementById("pantalla");
+        let lista = num.value.split(",");
+        let error = false;
+        for (i = 0; i < lista.length; i++) {
+          if (!validar(+lista[i])) {
+            error = true;
+            num.value = "Error";
+          }
+        }
+        if (!error) {
+          lista.pop();
+          num.value = lista;
         }
       };
     </script>
@@ -100,11 +194,13 @@
 
       <p>Operaciones binarias</p>
       <div class="filaOps">
-        <button id="suma" onclick="suma()">+</button>
-        <button id="resta" onclick="resta()">-</button>
-        <button id="mult" onclick="mult()">*</button>
-        <button id="div" onclick="div()">/</button>
-        <button id="igual" onclick="igual()">=</button>
+        <button id="suma" onclick="operacionBinaria('suma')">+</button>
+        <button id="resta" onclick="operacionBinaria('resta')">-</button>
+        <button id="multiplicacion" onclick="operacionBinaria('mult')">
+          *
+        </button>
+        <button id="division" onclick="operacionBinaria('div')">/</button>
+        <button id="igual" onclick="calcular()">=</button>
       </div>
 
       <p>Operaciones en formato CSV</p>

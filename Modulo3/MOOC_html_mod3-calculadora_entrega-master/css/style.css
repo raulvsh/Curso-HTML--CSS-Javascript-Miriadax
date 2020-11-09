@@ -40,12 +40,3 @@ button {
 button:hover {
   background-color: #d6dae0;
 }
-
-#cuadrado,
-#factorial,
-#modulo,
-#ordenar,
-#revertir,
-#sumatorio {
-  background-color: greenyellow;
-}
