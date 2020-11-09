@@ -5,14 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Raúl Velasco Salinas" />
     <link rel="shortcut icon" href="./img/circle_favicon.ico" />
-
     <title>
       Desarrollo Frontend con HTML, CSS y Javascript - Ra&uacute;l Velasco
       Salinas
     </title>
     <link rel="stylesheet" href="css/styles.css" type="text/css" media="all" />
+    <script src="./js/scripts.js"></script>
   </head>
   <body>
+    <!--En el futuro hacerlo automático, solo un div, y en javascript hacer lo siguiente.
+    Array de modulos[{title:, listaEjs:ejerciciosMod0},{title:Modulo1, listaEjs:ejerciciosMod1}]
+    Array de ejerciciosMod0[title: , url]
+    se hace un bucle
+    for element in modulos(){
+    <h2>modulos[i].title</h2>
+    for element in ejerciciosMod(){
+      <a href=modulos[i].listaEjs[j].url>modulos[i].listaEjs[j].title</a>
+    }
+    }
+    De esta manera no se alarga el html y se genera automáticamente la página (equivalente al TFG de Dart/Flutter)
+    -->
     <div class="container">
       <header>
         <h1 id="titulo">Desarrollo Frontend con HTML, CSS y Javascript</h1>
