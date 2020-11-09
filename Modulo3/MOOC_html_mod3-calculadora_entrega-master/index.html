@@ -8,172 +8,8 @@
       href="https://fonts.googleapis.com/css?family=Lato:400,700"
       rel="stylesheet"
     />
-    <script type="text/javascript">
-      var operandoA = +0;
-      var operador = "";
-
-      /*FUNCIONES COMUNES*/
-      const vaciar = () => {
-        document.getElementById("pantalla").value = "";
-      };
-
-      const rellenar_info = (num) => {
-        let mensaje = document.getElementById("info");
-        mensaje.innerHTML = "Info: el resultado ";
-        if (num < 100) {
-          mensaje.innerHTML += "es menor que 100.";
-        } else if (num <= 200) {
-          mensaje.innerHTML += "está entre 100 y 200.";
-        } else if (num > 200) {
-          mensaje.innerHTML += "es superior a 200";
-        } else {
-          mensaje.innerHTML += "es erróneo";
-        }
-      };
-
-      const validar = (value) => {
-        let num = document.getElementById("pantalla");
-
-        if (isNaN(value)) {
-          return false;
-        } else {
-          return true;
-        }
-      };
-
-      /* OPERACIONES UNITARIAS */
-      const cuadrado = () => {
-        let num = document.getElementById("pantalla");
-        if (validar(num.value)) {
-          num.value = num.value * num.value;
-        } else {
-          num.value = "Error";
-        }
-        //num.value = num.value * num.value;
-        let mensaje = document.getElementById("info");
-        rellenar_info(num.value);
-      };
-
-      const mod = () => {
-        let num = document.getElementById("pantalla");
-        if (validar(num.value) && num.value < 0) {
-          num.value = -num.value;
-        } else if (validar(num.value) && num.value > 0) {
-          num.value = num.value;
-        } else {
-          num.value = "Error";
-        }
-        rellenar_info(num.value);
-      };
-
-      const fact = () => {
-        let num = document.getElementById("pantalla");
-        let factorial = 1;
-        if (validar(num.value)) {
-          if (num.value < 0) factorial = 0;
-
-          for (let i = num.value; i >= 1; i--) {
-            factorial *= i;
-          }
-          num.value = factorial;
-        } else {
-          num.value = "Error";
-        }
-
-        rellenar_info(num.value);
-      };
-
-      /* OPERACIONES BINARIAS */
-      const operacionBinaria = (operacion) => {
-        let num = document.getElementById("pantalla");
-        //Se guarda el número en la variable global
-        if (validar(num.value)) {
-          operandoA = +num.value;
-        } else {
-          num.value = "Error";
-        }
-        //Se guarda la operación en la variable global
-        operador = operacion;
-      };
-
-      const calcular = () => {
-        let num = document.getElementById("pantalla");
-        switch (operador) {
-          case "suma":
-            num.value = operandoA + +num.value;
-            break;
-          case "resta":
-            num.value = operandoA - +num.value;
-            break;
-          case "mult":
-            num.value = operandoA * +num.value;
-            break;
-          case "div":
-            num.value = operandoA / +num.value;
-            break;
-        }
-      };
-
-      /* OPERACIONES EN FORMATO CSV */
-      const sumatorio = () => {
-        let num = document.getElementById("pantalla");
-        let lista = num.value.split(",");
-        let suma = 0;
-        let error = false;
-        //hacer función validar lista
-        for (i = 0; i < lista.length; i++) {
-          if (validar(+lista[i])) {
-            suma += +lista[i];
-          } else {
-            error = true;
-            num.value = "Error";
-          }
-        }
-        if (!error) num.value = suma;
-        rellenar_info(num.value);
-      };
-
-      const ordenar = () => {
-        let num = document.getElementById("pantalla");
-        let lista = num.value.split(",");
-        let error = false;
-        for (i = 0; i < lista.length; i++) {
-          if (!validar(+lista[i])) {
-            error = true;
-            num.value = "Error";
-          }
-        }
-        if (!error) num.value = lista.sort((a, b) => a - b);
-      };
-
-      const revertir = () => {
-        let num = document.getElementById("pantalla");
-        let lista = num.value.split(",");
-        let error = false;
-        for (i = 0; i < lista.length; i++) {
-          if (!validar(+lista[i])) {
-            error = true;
-            num.value = "Error";
-          }
-        }
-        if (!error) num.value = lista.reverse();
-      };
-
-      const quitar = () => {
-        let num = document.getElementById("pantalla");
-        let lista = num.value.split(",");
-        let error = false;
-        for (i = 0; i < lista.length; i++) {
-          if (!validar(+lista[i])) {
-            error = true;
-            num.value = "Error";
-          }
-        }
-        if (!error) {
-          lista.pop();
-          num.value = lista;
-        }
-      };
+    <script src="./js/scripts.js">
+      
     </script>
   </head>
   <body>
@@ -181,7 +17,7 @@
       <h1>Calculadora de CORE</h1>
       Número:
       <input type="text" id="pantalla" onclick="vaciar()" /><br /><br />
-      <h2 id="info" class="grande" title="Info sobre el numero">
+      <h2 id="info" class="grande" title="Info sobre el número">
         Información sobre el número
       </h2>
 
@@ -196,11 +32,14 @@
       <div class="filaOps">
         <button id="suma" onclick="operacionBinaria('suma')">+</button>
         <button id="resta" onclick="operacionBinaria('resta')">-</button>
-        <button id="multiplicacion" onclick="operacionBinaria('mult')">
+        <button id="multiplicacion" onclick="operacionBinaria('multiplicacion')">
           *
         </button>
         <button id="division" onclick="operacionBinaria('div')">/</button>
-        <button id="igual" onclick="calcular()">=</button>
+        <button id="division" onclick="operacionBinaria('resto')">Resto</button>
+        <button id="division" onclick="operacionBinaria('potencia')">x<sup>y</button>
+
+        <button id="igual" onclick="eq()">=</button>
       </div>
 
       <p>Operaciones en formato CSV</p>
