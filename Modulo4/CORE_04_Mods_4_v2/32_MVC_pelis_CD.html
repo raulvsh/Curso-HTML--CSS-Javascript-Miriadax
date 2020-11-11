@@ -1,61 +1,71 @@
-
-<!doctype html><html><head><meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
     <script type="text/javascript">
-        // MODELO
-        var peliculas = ["Superlópez", "E.T.", "Interstellar"];
+      // MODELO
+      var peliculas = ["Superlópez", "E.T.", "Interstellar"];
+      var indice = 0; //Variable para guardar la posición del elemento a actualizar
 
-        // VISTAS
-        function indexView (pelis) {
-            var    i=0,   html = "<ul>";   
-            while(i < pelis.length) {
-              html = html + `<li> ${pelis[i]} <button id="edit" data-my-id="${i}">Editar</button> <button id="delete" data-my-id="${i}">Borrar</button></li>`;
-              i = i + 1;
-            };
-            return html + `</ul> <button id="new">Crear</button>`;
-        };
+      // VISTAS
+      function indexView(pelis) {
+        var i = 0,
+          html = "<ul>";
+        while (i < pelis.length) {
+          html =
+            html +
+            `<li> ${pelis[i]} <button id="edit" data-my-id="${i}">Editar</button> <button id="delete" data-my-id="${i}">Borrar</button></li>`;
+          i = i + 1;
+        }
+        return html + `</ul> <button id="new">Crear</button>`;
+      }
 
-        function newView () {
-            return `Introducir nueva pelicula: <input type="text" id="peli"> <button id="create">Añadir</button>`
-        };
+      function newView() {
+        return `Introducir nueva pelicula: <input type="text" id="peli"> <button id="create">Añadir</button>`;
+      }
 
-        function editView () {
-            return `Introduce el nuevo título: <input type="text" id="peli"> <button id="update">Actualizar</button>`
-        };
+      function editView(i) {
+        return `Introduce el nuevo título: <input type="text" id="peli"> <button id="update">Actualizar</button>`;
+      }
 
-        // CONTROLADORES
-        function indexContr() { document.getElementById("main").innerHTML = indexView(peliculas);};
-        function newContr() { document.getElementById("main").innerHTML = newView();};        
-        function createContr() {
-            peliculas.push(document.getElementById("peli").value);
-            indexContr();
-        };
-        function deleteContr(i) {
-            peliculas.splice(i,1);
-            indexContr();
-        };
-        function editContr() { document.getElementById("main").innerHTML = editView();};      
-        function updateContr(i) {
-            peliculas.splice(i,1,document.getElementById("peli").value);
-            indexContr();
-        }; 
+      // CONTROLADORES
+      function indexContr() {
+        document.getElementById("main").innerHTML = indexView(peliculas);
+      }
+      function newContr() {
+        document.getElementById("main").innerHTML = newView();
+      }
+      function createContr() {
+        peliculas.push(document.getElementById("peli").value);
+        indexContr();
+      }
+      function deleteContr(i) {
+        peliculas.splice(i, 1);
+        indexContr();
+      }
+      function editContr(i) {
+        indice = i;
+        document.getElementById("main").innerHTML = editView(i);
+      }
+      function updateContr(i) {
+        peliculas.splice(i, 1, document.getElementById("peli").value);
+        indexContr();
+      }
 
-        // EVENTOS
-        document.addEventListener('DOMContentLoaded', ev => indexContr());
-        document.addEventListener('click', ev => {
-            if      (ev.target.matches('#new'))    newContr();
-            else if (ev.target.matches('#create')) createContr();
-            else if (ev.target.matches('#delete')) deleteContr(ev.target.dataset.myId);
-            else if (ev.target.matches('#edit')) editContr(ev.target.dataset.myId);
-            else if (ev.target.matches('#update')) updateContr(ev.target.dataset.myId);
-
-
-        })
+      // EVENTOS
+      document.addEventListener("DOMContentLoaded", (ev) => indexContr());
+      document.addEventListener("click", (ev) => {
+        if (ev.target.matches("#new")) newContr();
+        else if (ev.target.matches("#create")) createContr();
+        else if (ev.target.matches("#delete"))
+          deleteContr(ev.target.dataset.myId);
+        else if (ev.target.matches("#edit")) editContr(ev.target.dataset.myId);
+        else if (ev.target.matches("#update")) updateContr(indice);
+      });
     </script>
-</head>
-<body>
-    <h1> Mis películas </h1>
+  </head>
+  <body>
+    <h1>Mis películas</h1>
     <div id="main"></div>
-</body>
+  </body>
 </html>
-
-

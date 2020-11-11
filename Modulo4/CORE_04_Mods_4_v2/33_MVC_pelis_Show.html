@@ -1,48 +1,120 @@
-
-<!doctype html><html><head><meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      li:hover {
+        background-color: greenyellow;
+      }
+    </style>
     <script type="text/javascript">
-        // MODELO
-        var peliculas = [
-            {titulo: "Superlópez",   director: "Javier Ruiz Caldera", estreno: "2018"},
-            {titulo: "E.T.",         director: "Steven Spielberg",    estreno: "1982"},
-            {titulo: "Interstellar", director: "Christopher Nolan",   estreno: "2014"}
-        ];
+      // MODELO
+      var peliculas = [
+        {
+          titulo: "Superlópez",
+          director: "Javier Ruiz Caldera",
+          estreno: "2018",
+        },
+        { titulo: "E.T.", director: "Steven Spielberg", estreno: "1982" },
+        {
+          titulo: "Interstellar",
+          director: "Christopher Nolan",
+          estreno: "2014",
+        },
+      ];
+      var indice = 0; //Variable para guardar la posición del elemento a actualizar
 
-        // VISTAS
-        function indexView (pelis) {
-            var    i=0,   html = "<ul>";
-            while(i < pelis.length) {
-              html = html + `<li id="show" data-my-id="${i}"> ${pelis[i].titulo}</li>`;
-              i = i + 1;
-            };
-            return html + "</ul>";
-        };
 
-        function showView (peli) {
-            return `
+      // VISTAS
+      function indexView(pelis) {
+        var i = 0,
+          html = "<ul>";
+        while (i < pelis.length) {
+          html =
+            html +
+            `<li id="show" data-my-id="${i}"> ${pelis[i].titulo} <button id="edit" data-my-id="${i}">Editar</button> <button id="delete" data-my-id="${i}">Borrar</button></li>`;
+          i = i + 1;
+        }
+        return html + `</ul> <button id="new">Crear</button>`;
+      }
+
+      function showView(peli) {
+        return `
             La película <b> ${peli.titulo}</b>, estrenada
             en el año <b> ${peli.estreno}</b>, fue
             dirigida por <b> ${peli.director}</b>.
             
-            <p><button id="index"> Volver </button></p>`
-        }
+            <p><button id="index"> Volver </button></p>`;
+      }
 
-        // CONTROLADORES
-        function indexContr() { document.getElementById("main").innerHTML = indexView(peliculas);};
-        function showContr(i) { document.getElementById("main").innerHTML = showView(peliculas[i]);};
-        
-        // EVENTOS
-        document.addEventListener('DOMContentLoaded', ev => indexContr());
-        document.addEventListener('click', ev => {
-            if      (ev.target.matches('#index')) indexContr();
-            else if (ev.target.matches('#show'))  showContr(ev.target.dataset.myId);
-        })
+      function newView() {
+        return `<h4>Nueva película</h4>
+            Introducir  título: <input type="text" id="titulo"> <br>
+            Introducir director:<input type="text" id="director"> <br>
+            Introducir año de estreno:<input type="text" id="estreno"> <br>
+            <button id="create">Añadir</button><br>`;
+      }
+
+      function editView() {
+        return `<h4>Editar película</h4>
+            Introducir  título: <input type="text" id="titulo"> <br>
+            Introducir director:<input type="text" id="director"> <br>
+            Introducir año de estreno:<input type="text" id="estreno"> <br>
+            <button id="update">Guardar cambios</button><br>`;
+      }
+
+      // CONTROLADORES
+      function indexContr() {
+        document.getElementById("main").innerHTML = indexView(peliculas);
+      }
+      function showContr(i) {
+        document.getElementById("main").innerHTML = showView(peliculas[i]);
+      }
+      function newContr() {
+        document.getElementById("main").innerHTML = newView();
+      }
+      function createContr() {
+        peliculas.push({
+          titulo: document.getElementById("titulo").value,
+          director: document.getElementById("director").value,
+          estreno: document.getElementById("estreno").value,
+        });
+        indexContr();
+      }
+      function deleteContr(i) {
+        peliculas.splice(i, 1);
+        indexContr();
+      }
+      function editContr(i) {
+          indice=i;
+        document.getElementById("main").innerHTML = editView();
+      }
+      function updateContr(i) {
+        let peli = {
+          titulo: document.getElementById("titulo").value,
+          director: document.getElementById("director").value,
+          estreno: document.getElementById("estreno").value,
+        };
+        peliculas.splice(i, 1, peli);
+        indexContr();
+      }
+      // EVENTOS
+      document.addEventListener("DOMContentLoaded", (ev) => indexContr());
+      document.addEventListener("click", (ev) => {
+        if (ev.target.matches("#index")) indexContr();
+        else if (ev.target.matches("#new")) newContr();
+        else if (ev.target.matches("#create")) createContr();
+        else if (ev.target.matches("#show")) showContr(ev.target.dataset.myId);
+        else if (ev.target.matches("#delete"))
+          deleteContr(ev.target.dataset.myId);
+        else if (ev.target.matches("#edit")) editContr(ev.target.dataset.myId);
+        else if (ev.target.matches("#update"))
+          updateContr(indice);
+      });
     </script>
-</head>
-<body>
-    <h1> Mis películas </h1>
+  </head>
+  <body>
+    <h1>Mis películas</h1>
     <div id="main"></div>
-</body>
+  </body>
 </html>
-
-
