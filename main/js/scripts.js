@@ -57,21 +57,26 @@ var ejsMod4 = [
     title: "Eventos&nbsp;y&nbsp;bubbling",
     desc: "Tema 1. Ejercicio opcional. Eventos y bubbling.",
   },
-  /*{
-    href: "../Modulo2/tema2_ej_opcional/index.html",
-    title: "Uso&nbsp;de&nbsp;objetos&nbsp;JavaScript",
-    desc: "Tema 3. Ejercicio opcional. Uso de objetos JavaScript",
+  {
+    href: "../Modulo4/CORE_04_Mods_4_v2/33_MVC_pelis_Show.html",
+    title: "Botones&nbsp;Crear,&nbsp;Editar,&nbsp;Borrar,&nbsp;Mostrar Detalles.",
+    desc: "Tema 3. Ejercicio opcional. Lista de películas con botón Crear, Editar, Borrar, Mostrar Detalles",
   },
   {
-    href: "../Modulo2/tema3_ej_opcional/index.html",
+    href: "../Modulo4/CORE_04_Mods_4_v2/52-Array_pelis_localStorage.html",
     title: "Añadir&nbsp;botón&nbsp;reset",
-    desc: "Tema 6. Ejercicio opcional. Añadir botón de reseteo de películas.",
-  },
+    desc: "Tema 6. Ejercicio opcional. Añadir botón Reset a lista de películas.",
+  },  
   {
-    href: "../Modulo2/entrega_p2p_modulo2/index.html",
+    href: "../Modulo4/MOOC_html_mod4-MVC_cliente_entrega-master/index.html",
     title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
-    desc: "Ejercicio P2P Obligatorio",
-  },*/
+    desc: "Ejercicio P2P Obligatorio. Aplicación Web de Películas",
+  },  
+
+];
+
+var ejsMod5=[
+
 ];
 
 var modulos = [
@@ -94,6 +99,11 @@ var modulos = [
       "Modulo4. Eventos, Objetos, Arrays, MVC, JSON, Boolean y Storage API  ",
     ejs: ejsMod4,
   },
+  {
+    title:
+    "Modulo5. Tipos y clases, herencia, Number, multi-asignación, Spread/rest",
+  ejs: ejsMod5,
+  }
 ];
 
 // VISTA
@@ -121,7 +131,7 @@ function indexView(modulos) {
     i++;
   }
 
-  return html ;
+  return html;
 }
 
 // CONTROLADOR
