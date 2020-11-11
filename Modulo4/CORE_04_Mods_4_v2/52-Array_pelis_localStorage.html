@@ -33,9 +33,16 @@
             document.getElementById('lista').innerHTML = showView();
         };
 
+        function resetContr(){
+            localStorage.setItem('c', inicial);
+            mis_peliculas = JSON.parse(localStorage.getItem('c'));
+            document.getElementById('lista').innerHTML = showView();
+        }
+
         // Eventos
         document.addEventListener('click', ev => {
             if (ev.target.matches('#add')) addContr ();
+            else if(ev.target.matches('#reset')) resetContr();
         })
         
         document.addEventListener('DOMContentLoaded', showContr);
@@ -48,7 +55,8 @@
 
     Añadir película: 
     <input type="text" id="pelicula">
-    <button id="add">Añadir</button>
+    <button id="add">Añadir</button><br>
+    <button id="reset">Resetear</button>
 </body></html>
 
 
