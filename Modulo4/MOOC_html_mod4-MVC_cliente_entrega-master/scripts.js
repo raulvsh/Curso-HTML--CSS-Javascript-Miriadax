@@ -1,5 +1,4 @@
 // MODELO DE DATOS
-
 let mis_peliculas_iniciales = [
   {
     titulo: "Superlópez",
@@ -41,7 +40,6 @@ const indexView = (peliculas) => {
               <button class="show" data-my-id="${i}">ver</button>
               <button class="edit" data-my-id="${i}">editar</button>
               <button class="delete" data-my-id="${i}">borrar</button>               
-
             </div>
         </div>\n`;
     i = i + 1;
@@ -78,7 +76,7 @@ const editView = (i, pelicula) => {
             </button>
             <button class="index">
                 Volver
-            </button>
+            </button></div>
        `;
 };
 
@@ -88,7 +86,6 @@ const showView = (pelicula) => {
      <h2>${pelicula.titulo}</h2>
      <img id="miniaturaShow" src=${pelicula.miniatura}></img>
      <h4>${pelicula.director}</h4>
-
      </p>
      <div class="actions">
         <button class="index">Volver</button>
@@ -101,9 +98,8 @@ const newView = () => {
           Introducir director:<input type="text" id="director"> <br>
           Introducir url de la miniatura:<input type="text" id="miniatura"> <br>
           <div class="actions">
+            <button class="create">Crear</button>
             <button class="index">Volver</button>
-            <button class="create">Guardar</button>
-
           </div>`;
 };
 
@@ -150,12 +146,24 @@ const updateContr = (i) => {
 };
 
 const deleteContr = (i) => {
-  // Completar:  controlador que actualiza el modelo borrando la película seleccionada
-  // Genera diálogo de confirmación: botón Aceptar devuelve true, Cancel false
+  let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+
+  if (
+    confirm(
+      `¿Está seguro de que desea borrar la película ${mis_peliculas[i].titulo}?`
+    )
+  ) {
+    mis_peliculas.splice(i, 1);
+    localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+  }
+  indexContr();
 };
 
 const resetContr = () => {
-  // Completar:  controlador que reinicia el modelo guardado en localStorage con las películas originales
+  let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+  mis_peliculas = mis_peliculas_iniciales;
+  localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+  indexContr();
 };
 
 // ROUTER de eventos
@@ -169,8 +177,8 @@ document.addEventListener("click", (ev) => {
   else if (matchEvent(ev, ".show")) showContr(myId(ev));
   else if (matchEvent(ev, ".new")) newContr();
   else if (matchEvent(ev, ".create")) createContr();
-  else if (matchEvent(ev, ".delete")) deleteContr();
-  else if (matchEvent(ev, ".delete")) resetContr();
+  else if (matchEvent(ev, ".delete")) deleteContr(myId(ev));
+  else if (matchEvent(ev, ".reset")) resetContr();
 });
 
 // Inicialización
