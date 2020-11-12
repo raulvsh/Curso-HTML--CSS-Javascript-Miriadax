@@ -83,11 +83,11 @@ var ejsMod5 = [
     title: "Reloj",
     desc: "Tema 8. Ejercicio opcional. Modificar reloj.",
   },
-  /*{
-    href: "../  Modulo5\CORE_05_MOD_5_ej\50-clock.htm",
-    title: "Reloj",
-    desc: "Ejercicio P2P Obligatorio. Aplicación Web de Películas",
-  },  */
+  {
+    href: "Modulo5/MOOC_html_mod5-juego_entrega-master/index.html",
+    title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
+    desc: "Ejercicio P2P Obligatorio. Juego de disparos",
+  },  
 ];
 
 var ejsMod6 = [];
