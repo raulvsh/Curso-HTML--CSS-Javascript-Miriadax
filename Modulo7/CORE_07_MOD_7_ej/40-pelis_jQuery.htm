@@ -1,0 +1,28 @@
+
+<!DOCTYPE html><html>
+<head><meta charset="UTF-8">
+<script type="text/javascript" src="jquery-3.4.1.min.js"></script></head>
+<body>
+  <h3>Ejemplo AJAX - jQuery</h3>
+
+  <div  id='res'></div>
+
+  <script type="text/javascript">
+
+    $.ajax( { type:'GET',
+              url: 'https://juan-quemada.neocities.org/ex/pelis.json',
+              success: function(response){
+                $('#res').html(`Respuesta: <br> ${JSON.stringify(response)}`);
+              },
+              error: function(err){
+                $('#res').html(`Error: <br> ${JSON.stringify(err)}`);
+              }
+            }
+          )
+  
+//    'https://juan-quemada.neocities.org/ex/pelis.json'
+//    'https://api.myjson.com/bins//a7k7a'
+  </script>  
+</body>
+</html>
+

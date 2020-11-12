@@ -1,0 +1,51 @@
+<!DOCTYPE html><html>
+<head><meta charset="UTF-8"></head>
+<body>
+  <h3>Ejemplo AJAX - POST</h3>
+
+	<div  id='res'></div>
+	
+  <script type="text/javascript">
+
+		const peliculas = ["Superlópez", "Jurassic Park", "Interstellar"];
+		let my_uri, my_films;
+
+		function show (id, msj) { document.getElementById(id).innerHTML = msj; };
+
+		let creaPeliculas = async (peliculas) => {
+		
+				let response = await fetch('https://api.myjson.com/bins/', {
+					method: 'POST', 
+					headers: { "Content-Type": "application/json", },
+					body: JSON.stringify(peliculas)
+				});
+				let myJson = await response.json();
+				return myJson.uri;
+		}
+
+		const get = async (url) => {
+		
+			let response = await fetch(url);
+			return await response.json();
+		}
+
+		const main = async () => {
+			try {
+				my_uri = await creaPeliculas(peliculas);
+				my_films = await get(my_uri);
+				show('res', my_uri + "<br>" + my_films.join(", <br>"))
+			} catch (e) {
+				show('res', `Error: ${e}`);
+			}
+
+		}
+
+	/*
+		get(my_uri);
+	*/
+
+  main();
+
+  </script>
+  </body>
+</html>

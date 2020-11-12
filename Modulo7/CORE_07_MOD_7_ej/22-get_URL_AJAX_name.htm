@@ -1,0 +1,27 @@
+<!DOCTYPE html><html>
+<head><meta charset="UTF-8"></head>
+<body>
+  <h3>Ejemplo AJAX</h3>
+
+  <div  id='res'></div>
+
+  <script type="text/javascript">
+
+    function show (id, msj) { document.getElementById(id).innerHTML = msj; };
+  
+    let get = async (url) => {
+  
+      try {
+        let response = await fetch(url);
+        let myJson = await response.json();
+        show('res', `Respuesta: ${myJson[0].nombre}`);
+      } catch (e) {
+        show('res', `Error: ${e}`);
+      }
+    }
+  
+    get('https://api.myjson.com/bins/akwiy');
+  
+  </script>  
+</body>
+</html>
