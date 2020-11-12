@@ -84,7 +84,7 @@ var ejsMod5 = [
     desc: "Tema 8. Ejercicio opcional. Modificar reloj.",
   },
   {
-    href: "Modulo5/MOOC_html_mod5-juego_entrega-master/index.html",
+    href: "../Modulo5/MOOC_html_mod5-juego_entrega-master/index.html",
     title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
     desc: "Ejercicio P2P Obligatorio. Juego de disparos",
   },  
