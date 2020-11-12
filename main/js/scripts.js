@@ -59,29 +59,47 @@ var ejsMod4 = [
   },
   {
     href: "../Modulo4/CORE_04_Mods_4_v2/33_MVC_pelis_Show.html",
-    title: "Botones&nbsp;Crear,&nbsp;Editar,&nbsp;Borrar,&nbsp;Mostrar Detalles.",
-    desc: "Tema 3. Ejercicio opcional. Lista de películas con botón Crear, Editar, Borrar, Mostrar Detalles",
+    title:
+      "Botones&nbsp;Crear,&nbsp;Editar,&nbsp;Borrar,&nbsp;Mostrar Detalles.",
+    desc:
+      "Tema 3. Ejercicio opcional. Lista de películas con botón Crear, Editar, Borrar, Mostrar Detalles",
   },
   {
     href: "../Modulo4/CORE_04_Mods_4_v2/52-Array_pelis_localStorage.html",
     title: "Añadir&nbsp;botón&nbsp;reset",
-    desc: "Tema 6. Ejercicio opcional. Añadir botón Reset a lista de películas.",
-  },  
+    desc:
+      "Tema 6. Ejercicio opcional. Añadir botón Reset a lista de películas.",
+  },
   {
     href: "../Modulo4/MOOC_html_mod4-MVC_cliente_entrega-master/index.html",
     title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
     desc: "Ejercicio P2P Obligatorio. Aplicación Web de Películas",
-  },  
-
+  },
 ];
 
-var ejsMod5=[
-
+var ejsMod5 = [
+  {
+    href: "../Modulo5/CORE_05_MOD_5_ej/51-clock_mod.htm",
+    title: "Reloj",
+    desc: "Tema 8. Ejercicio opcional. Modificar reloj.",
+  },
+  /*{
+    href: "../  Modulo5\CORE_05_MOD_5_ej\50-clock.htm",
+    title: "Reloj",
+    desc: "Ejercicio P2P Obligatorio. Aplicación Web de Películas",
+  },  */
 ];
+
+var ejsMod6 = [];
+var ejsMod7 = [];
+var ejsMod8 = [];
+var ejsMod9 = [];
+var ejsMod10 = [];
+
 
 var modulos = [
   {
-    title: "Modulo 1. Introducción a HTML y CSS, estructura, herencia...",
+    title: "Módulo 1. Introducción a HTML y CSS, estructura, herencia...",
     ejs: ejsMod1,
   },
   {
@@ -91,19 +109,44 @@ var modulos = [
   },
   {
     title:
-      "Modulo3. Introducción a ES6+, let, VS Code, DOM, Boolean, if, bucles...",
+      "Módulo 3. Introducción a ES6+, let, VS Code, DOM, Boolean, if, bucles...",
     ejs: ejsMod3,
   },
   {
     title:
-      "Modulo4. Eventos, Objetos, Arrays, MVC, JSON, Boolean y Storage API  ",
+      "Módulo 4. Eventos, Objetos, Arrays, MVC, JSON, Boolean y Storage API  ",
     ejs: ejsMod4,
   },
   {
     title:
-    "Modulo5. Tipos y clases, herencia, Number, multi-asignación, Spread/rest",
-  ejs: ejsMod5,
-  }
+      "Módulo 5. Tipos y clases, herencia, Number, multi-asignación, Spread/rest",
+    ejs: ejsMod5,
+  },
+  {
+    title:
+      "Módulo 6. Strings, Iteradores Y Bucles, Programación Funcional Y Regexp",
+    ejs: ejsMod6,
+  },
+  {
+    title: "Módulo7. Excepciones, Promesas, Async/Await, HTTP, AJAX Y JQuery",
+    ejs: ejsMod7,
+  },
+  {
+    title:
+      "Módulo 8. Arq. Información, UX, Wireframes, Iconos, SEO, SASS. @Media",
+    ejs: ejsMod8,
+  },
+  {
+    title:
+      "Módulo 9. Transiciones, Animaciones CSS, SVG, Interacción Gestual...",
+
+    ejs: ejsMod9,
+  },
+  {
+    title:
+      "Módulo 10. PWAs. Desarrollando Aplicaciones Para Android/IOS/Escritorio",
+    ejs: ejsMod10,
+  },
 ];
 
 // VISTA

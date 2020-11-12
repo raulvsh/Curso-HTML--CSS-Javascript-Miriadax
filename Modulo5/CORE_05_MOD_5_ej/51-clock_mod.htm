@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html><head><title>Reloj</title>
+            <meta charset="UTF-8">
+
+<script type="text/javascript">
+
+  const mostrar_fecha = ( ) => 
+    
+
+  {
+    let fecha = new Date();
+    let horas = fecha.getHours();
+    let minutos = fecha.getMinutes();
+    let segundos = fecha.getSeconds();
+    let milisegundos = fecha.getMilliseconds();
+
+    let fechaFormateada = `${horas}:${minutos}:${segundos},${Math.floor(milisegundos/100)}`;
+    document.getElementById("fecha").innerHTML = fechaFormateada; 
+
+  }
+
+  document.addEventListener(
+    'DOMContentLoaded', 
+    () => {
+      setInterval(mostrar_fecha, 100); 
+      mostrar_fecha();
+    }
+  )
+</script>
+</head>
+<body>
+
+  <h2>Reloj</h2>  
+  La hora actual es: <div id="fecha"><div>
+</body>
+</html>
+
