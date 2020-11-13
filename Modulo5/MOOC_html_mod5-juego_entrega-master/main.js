@@ -17,8 +17,12 @@ const OPPONENT_HEIGHT = 5,
   SHOT_SPEED = 6.4, //Por defecto a 20, ajustada a los nuevos fps
   SHOT_PICTURE_PLAYER = "assets/shot1.png",
   SHOT_PICTURE_OPPONENT = "assets/shot2.png",
-  SHOT_WIDTH = 1.5;
-  NUM_LIVES = 3;
+  SHOT_WIDTH = 1.5,
+  NUM_LIVES = 3,
+  BOSS_PICTURE = "assets/jefe.png",
+  BOSS_PICTURE_DEAD = "assets/jefe_muerto.png"
+  BOSS_SPEED = 6.4;
+  YOU_WIN_PICTURE = "assets/you_win.png";
 
 function getRandomNumber(range) {
   return Math.floor(Math.random() * range);

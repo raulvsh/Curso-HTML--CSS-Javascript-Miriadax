@@ -90,7 +90,8 @@ class Game {
         if (this.opponent) {
             document.body.removeChild(this.opponent.image);
         }
-        this.opponent = new Opponent(this);
+       // this.opponent = new Opponent(this);
+       this.Opponent= new Boss(this);
     }
 
     /**
@@ -208,8 +209,14 @@ class Game {
      */
     endGame () {
         this.ended = true;
-        let gameOver = new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, GAME_OVER_PICTURE)
-        gameOver.render();
+        if(this.lives>0){
+            let youWin = new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, YOU_WIN_PICTURE);
+            youWin.render();
+        } else{
+            let gameOver = new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, GAME_OVER_PICTURE);
+            gameOver.render();
+        }
+     
     }
 
     /**
