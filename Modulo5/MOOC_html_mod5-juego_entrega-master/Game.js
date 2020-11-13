@@ -86,13 +86,26 @@ class Game {
     /**
      * Elimina al oponente del juego
      */
-    removeOpponent () {
+    removeOpponent() {
+        if (this.opponent.opponent === 'Boss') {
+            this.endGame();
+            //this.ended = true;
+            //let gameWin = new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, YOU_WIN_PICTURE)
+            //gameWin.render();
+        } else {
+            document.body.removeChild(this.opponent.image);
+            this.opponent = new Boss(this);
+            //this.opponent.image.src = "assets/jefe.png";
+        }
+    }
+
+    /*removeOpponent () {
         if (this.opponent) {
             document.body.removeChild(this.opponent.image);
         }
-       // this.opponent = new Opponent(this);
+        //this.opponent = new Opponent(this);
        this.Opponent= new Boss(this);
-    }
+    }*/
 
     /**
      * Comprueba la tecla que está pulsando el usuario
@@ -209,7 +222,7 @@ class Game {
      */
     endGame () {
         this.ended = true;
-        if(this.lives>0){
+        if(this.player.lives>0){
             let youWin = new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, YOU_WIN_PICTURE);
             youWin.render();
         } else{

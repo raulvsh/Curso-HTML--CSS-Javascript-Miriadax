@@ -50,6 +50,7 @@ class Player extends Character {
     if (!this.dead) {
       super.collide();
       this.lives--;
+
       if (this.lives > 0) {
         setTimeout(() => {
           this.image.src = this.myImage;
