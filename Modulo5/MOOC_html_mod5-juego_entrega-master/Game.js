@@ -40,7 +40,7 @@ class Game {
             this.width = window.innerWidth;
             this.height = window.innerHeight;
 
-            this.player = new Player(this);
+            this.player = new Player(this, NUM_LIVES);
             this.timer = setInterval(() => this.update(), 16); //Por defecto 50ms, así está a 62fps
         }
     }
@@ -254,5 +254,8 @@ class Game {
         this.opponentShots.forEach((shot) => {
             shot.render();
         });
+        document.getElementById("scoreli").innerHTML= `<p>SCORE: ${this.score}<p>`;
+        document.getElementById("livesli").innerHTML= `<p>LIVES: ${this.player.lives}<p>`;
+
     }
 }
