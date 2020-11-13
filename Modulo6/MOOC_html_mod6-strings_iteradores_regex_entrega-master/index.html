@@ -27,8 +27,15 @@
       .split("")                       // generate array
       .filter((w) => (w!==""))         // remove empty string elem
 
-  // TODO
-  const word_array = (text) => []
+  // TODO hecho
+  const word_array = (text) => {
+    let array = [];
+    clean_string(text).split(" ").filter((w)=>array.push(w));
+    return array.length;
+  }
+  
+
+  
 
   const sentence_array = (text) =>
       clean_string(text)     
@@ -53,7 +60,7 @@
     let {text, view} = getIO();
 
     let result =  `Caracteres: ${char_array(text).length}\n`; 
-        result += `Palabras: ${"No implementado"/*TO DO*/}\n`;
+        result += `Palabras: ${word_array(text)}\n`;
         result += `Frases: ${sentence_array(text).length}\n`;
         result += `Lineas: ${text.split("\n").length}\n`;
     
@@ -78,6 +85,12 @@
 
   // TODO
   const word_index = () => {
+
+    //let array = [];
+    //clean_string(text).split(" ").filter((w)=>array.push(w));
+
+    view.innerHTML = "array";
+
   };
 
   const sentence_index = () => {
