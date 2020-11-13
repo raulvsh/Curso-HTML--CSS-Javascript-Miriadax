@@ -17,6 +17,7 @@ class Game {
         this.opponentShots = []; // Disparos del oponente
         this.xDown = null; //  Posición en la que el usuario ha tocado la pantalla
         this.paused = false; // Indica si el juego está pausado
+        this.score = 0; //Puntuación del usuario
     }
 
     /**
@@ -40,7 +41,7 @@ class Game {
             this.height = window.innerHeight;
 
             this.player = new Player(this);
-            this.timer = setInterval(() => this.update(), 50);
+            this.timer = setInterval(() => this.update(), 16); //Por defecto 50ms, así está a 62fps
         }
     }
 
