@@ -6,22 +6,26 @@ class Boss extends Opponent {
    * @param game {Game} La instancia del juego al que pertenece el oponente
    */
   constructor(game) {
-      const height = OPPONENT_HEIGHT * game.width / 100,
-          width = BOSS_WIDTH * game.width / 100,
-          x = getRandomNumber(game.width - width / 2),
-          y = 0,
-          speed = BOSS_SPEED,
-          myImage = BOSS_PICTURE,
-          myImageDead = BOSS_PICTURE_DEAD;
+    const myImage = BOSS_PICTURE;
+    const myImageDead = BOSS_PICTURE_DEAD;
+    const width = (BOSS_WIDTH * game.width)/100;
+    const height = (BOSS_HEIGHT * game.height)/100;
 
-      super(game, width, height, x, y, speed, myImage, myImageDead);
-      this.opponent = "Boss";
-      this.speed = BOSS_SPEED;
-      this.myImageDead = myImageDead;
-      this.image.src = this.opponent.dead === true ? BOSS_PICTURE_DEAD : BOSS_PICTURE;
-      this.direction = "R"; // DirecciÃ³n hacia la que se mueve el oponente
-      setTimeout(() => this.shoot(), 1000 + getRandomNumber(2500));
+    super(game, width, height);
+    this.opponent = "Boss";
+    this.speed = 2 * OPPONENT_SPEED;
+    this.myImage = myImage;
+    this.myImageDead = myImageDead;
+    //this.width=800;
+    //this.height=800;
+    //this.image.height=800;
+    //this.image.width=800;
+    this.image.src = this.opponent.dead === true ? myImageDead : myImage;
+
+
+    //this.image.style.backgroundColor="#9E260C";
+    
+    this.direction = "R"; // Dirección hacia la que se mueve el oponente
+    setTimeout(() => this.shoot(), 1000 + getRandomNumber(2500));
   }
-
-
 }

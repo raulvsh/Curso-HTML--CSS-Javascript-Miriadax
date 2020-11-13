@@ -274,8 +274,8 @@ class Game {
         this.opponentShots.forEach((shot) => {
             shot.render();
         });
-        document.getElementById("scoreli").innerHTML= `<p>SCORE: ${this.score}<p>`;
-        document.getElementById("livesli").innerHTML= `<p>LIVES: ${this.player.lives}<p>`;
+        document.getElementById("scoreli").innerHTML= `Score: ${this.score}`;
+        document.getElementById("livesli").innerHTML= `Lives: ${this.player.lives}`;
 
     }
 }
