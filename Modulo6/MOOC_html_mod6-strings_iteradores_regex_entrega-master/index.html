@@ -1,188 +1,193 @@
-<!DOCTYPE html><html>
-<head><meta charset="UTF-8">
-<script type="text/javascript" source="stopwords-es.json"></script>
-<script type="text/javascript">
-  const getById = id => document.getElementById(id);
-  const getAll = sel => document.querySelectorAll(sel);
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" source="stopwords-es.json"></script>
+    <script type="text/javascript">
+      const getById = (id) => document.getElementById(id);
+      const getAll = (sel) => document.querySelectorAll(sel);
 
-  const getIO = () => ({ text: getAll("#text")[0]
-                                  .value
-                                  .normalize(), 
-                          search: getAll("#search")[0]
-                                  .value
-                                  .normalize(),
-                          view: getAll("#view")[0]
-  });
+      const getIO = () => ({
+        text: getAll("#text")[0].value.normalize(),
+        search: getAll("#search")[0].value.normalize(),
+        view: getAll("#view")[0],
+      });
 
-    // Leave only words, numbers and correct punctuation chars.
-  const clean_string = (text) => 
-    text
-      .replace(/[\n\r\t]+/igm, " ")                                // Transform some separators to blanks 
-      .replace(/[^a-zñáéíóú0-9 \.,;:()¿?¡!“”❝❞«»❛❜'‘’\-_]+/igm, "") // Only letters, digits & punctuation 
-      .replace(/[ ]+/gm, " ")                                       // Remove extra blanks
+      // Leave only words, numbers and correct punctuation chars.
+      const clean_string = (text) =>
+        text
+          .replace(/[\n\r\t]+/gim, " ") // Transform some separators to blanks
+          .replace(/[^a-zñáéíóú0-9 \.,;:()¿?¡!“”❝❞«»❛❜'‘’\-_]+/gim, "") // Only letters, digits & punctuation
+          .replace(/[ ]+/gm, " "); // Remove extra blanks
 
-  const char_array = (text) => 
-    clean_string(text)
-      .replace(/[^a-zñáéíóú]+/igm, "") // leave only letters
-      .split("")                       // generate array
-      .filter((w) => (w!==""))         // remove empty string elem
+      const char_array = (text) =>
+        clean_string(text)
+          .replace(/[^a-zñáéíóú]+/gim, "") // leave only letters
+          .split("") // generate array
+          .filter((w) => w !== ""); // remove empty string elem
 
-  // TODO hecho
-  const word_array = (text) => {
-    let array = [];
-    clean_string(text).split(" ").filter((w)=>array.push(w));
-    return array.length;
-  }
-  
+      // COMPLETADO
+      const word_array = (text) => {
+        let array = [];
+        clean_string(text)
+          .replace(/[^a-zñáéíóú\s]+/gim, "") // leave only letters
+          .replace(/[ ]+/gm, " ") // Remove extra blanks
+          .split(" ")
+          .filter((w) => w !== "") //Quitar elemento vacío
+          .filter((w) => array.push(w)); //Añadir al array
+        console.log(array);
+        return array;
+      };
 
-  
+      const sentence_array = (text) =>
+        clean_string(text)
+          .replace(/([\.:;?!\n]+)/gm, "$1+")
+          .split("+")
+          .filter((w) => w !== "") // remove empty string elem
+          .map((s) => s.replace(/^[ 0-9]+(.*$)/, "$1")); // remove empty string elem
 
-  const sentence_array = (text) =>
-      clean_string(text)     
-      .replace(/([\.:;?!\n]+)/gm, "$1+")
-      .split("+")
-      .filter((w) => (w!==""))          // remove empty string elem
-      .map((s) => (s.replace(/^[ 0-9]+(.*$)/, "$1"))) // remove empty string elem
-
-  const repetitions = (ordered_array) => 
-    ordered_array
-      .reduce(
-        (acc, el, i, a) => {
-          if (i===0)            acc.push({s: el, n: 1});
-          else if (el===a[i-1]) acc[acc.length-1].n++;
-          else                  acc.push({s: el, n: 1});
+      const repetitions = (ordered_array) =>
+        ordered_array.reduce((acc, el, i, a) => {
+          if (i === 0) acc.push({ s: el, n: 1 });
+          else if (el === a[i - 1]) acc[acc.length - 1].n++;
+          else acc.push({ s: el, n: 1 });
           return acc;
-        }, 
-      []
-    );
+        }, []);
 
-  const count = () => {
-    let {text, view} = getIO();
+      const count = () => {
+        let { text, view } = getIO();
 
-    let result =  `Caracteres: ${char_array(text).length}\n`; 
-        result += `Palabras: ${word_array(text)}\n`;
+        let result = `Caracteres: ${char_array(text).length}\n`;
+        result += `Palabras: ${word_array(text).length}\n`;
         result += `Frases: ${sentence_array(text).length}\n`;
         result += `Lineas: ${text.split("\n").length}\n`;
-    
-    view.innerHTML = result;
-  };
 
-  const letter_index = () => {
-    let {text, view} = getIO();
+        view.innerHTML = result;
+      };
 
-    let ordered_letters = 
-      char_array(text)
-        .map(el => el.toLowerCase())
-        .sort();
+      const letter_index = () => {
+        let { text, view } = getIO();
 
-    let result = 
-      repetitions(ordered_letters)
-      .map(el => `${el.s}: ${el.n}`)
-      .join("\n");
+        let ordered_letters = char_array(text)
+          .map((el) => el.toLowerCase())
+          .sort();
 
-    view.innerHTML = result;
-  };
+        let result = repetitions(ordered_letters)
+          .map((el) => `${el.s}: ${el.n}`)
+          .join("\n");
 
-  // TODO
-  const word_index = () => {
+        view.innerHTML = result;
+      };
 
-    //let array = [];
-    //clean_string(text).split(" ").filter((w)=>array.push(w));
+      //COMPLETADO
+      const word_index = () => {
+        let { text, view } = getIO();
 
-    view.innerHTML = "array";
+        let ordered_words = word_array(text)
+          .map((word) => word.toLowerCase())
+          .sort();
 
-  };
+        let result = repetitions(ordered_words)
+          .map((word) => `${word.s}: ${word.n}`)
+          .join("\n");
 
-  const sentence_index = () => {
-    let {text, view} = getIO();
+        view.innerHTML = result;
+      };
 
-    let ordered_sentences = 
-      sentence_array(text)
-      .map(el => el.toLowerCase())
-      .sort();
-    let result = 
-      repetitions(ordered_sentences)
-      .map(el => `${el.s}: ${el.n}`)
-      .join("\n");                  
+      const sentence_index = () => {
+        let { text, view } = getIO();
 
-    view.innerHTML = result;
-  };
-   
-  const search_letters = () => {
-    let {text, view, search} = getIO();
+        let ordered_sentences = sentence_array(text)
+          .map((el) => el.toLowerCase())
+          .sort();
+        let result = repetitions(ordered_sentences)
+          .map((el) => `${el.s}: ${el.n}`)
+          .join("\n");
 
-    let ordered_letters = 
-      char_array(text)
-        .map(el => el.toLowerCase())
-        .filter(el => el.includes(search.toLowerCase()))
-        .sort();
+        view.innerHTML = result;
+      };
 
-    let result = `Hay ${ordered_letters.length} ocurrencias de la letra '${search}'.\n\n`
+      const search_letters = () => {
+        let { text, view, search } = getIO();
 
-    result +=
-      repetitions(ordered_letters)      
-        .map(el => `${el.n} repeticiones de:  ${el.s}`)  
-        .join("\n");                    
+        let ordered_letters = char_array(text)
+          .map((el) => el.toLowerCase())
+          .filter((el) => el.includes(search.toLowerCase()))
+          .sort();
 
-    view.innerHTML = result;
-  };
+        let result = `Hay ${ordered_letters.length} ocurrencias de la letra '${search}'.\n\n`;
 
-  // TODO
-  const search_words = () => {
-  };
+        result += repetitions(ordered_letters)
+          .map((el) => `${el.n} repeticiones de:  ${el.s}`)
+          .join("\n");
 
-  const search_sentences = () => {
-    let {text, view, search} = getIO();
+        view.innerHTML = result;
+      };
 
-    let searched_sentences = 
-      sentence_array(text)
-        .filter(el => el.includes(search))
-        .sort()
+      // COMPLETADO
+      const search_words = () => {
+        let { text, view, search } = getIO();
 
-    let result = `Hay ${searched_sentences.length} frases que contienen '${search}'.\n\n`
+        //Pasa el array de entrada a minúsculas
+        //Filtra según la búsqueda, también pasada a minúsculas
+        //Ordena con sort
+        let searched_words = word_array(text).map((w)=>w.toLowerCase()).filter((w)=> w.includes(search.toLowerCase())).sort();
 
-    result +=
-      repetitions(searched_sentences)
-      .map(el => `${el.n} repeticiones de:   ${el.s}`)
-      .join("\n");
+        let result = `Hay ${searched_words.length} palabras que contienen '${search}'.\n\n`;
+        result += repetitions(searched_words)
+          .map((el) => `${el.n} repeticiones de:   ${el.s}`)
+          .join("\n");
 
-    view.innerHTML = result;
-  };
+        view.innerHTML = result;
+      };
 
+      const search_sentences = () => {
+        let { text, view, search } = getIO();
 
-    // ROUTER de eventos
-  document.addEventListener('click', ev => {
-      if      (ev.target.matches('.count'))        count();
-      else if (ev.target.matches('.letter_index'))  letter_index(); 
-      else if (ev.target.matches('.word_index'))    word_index();
-      else if (ev.target.matches('.sentence_index'))    sentence_index();
-      else if (ev.target.matches('.search_letters'))  search_letters();
-      else if (ev.target.matches('.search_words'))  search_words();
-      else if (ev.target.matches('.search_sentences'))  search_sentences();
-  });
-</script>
-</head>
-<body>
-<h1>Análisis de texto</h1>
+        let searched_sentences = sentence_array(text)
+          .filter((el) => el.includes(search))
+          .sort();
 
-Introduzca un texto para analizarlo:<br>
-<textarea rows=10 cols=50 id="text" name="text"></textarea>
-<p>
-  <button class="count" >Contar</button><!-- TODO-->
-  <button class="letter_index" >Repeticiones de letras</button>
-  <button class="word_index" >Repeticiones de palabras</button>
-  <button class="sentence_index" >Repeticiones de frases</button>
-</p>
-<p>
-  Buscar repeticiones que contienen:
-  <input type="text" id="search" name="search" >
-  <button class="search_letters" >Buscar letras</button>
-  <button class="search_words" >Buscar palabras</button>
-  <button class="search_sentences" >Buscar frases</button>
-</p>
+        let result = `Hay ${searched_sentences.length} frases que contienen '${search}'.\n\n`;
 
-<pre id="view"></pre>
+        result += repetitions(searched_sentences)
+          .map((el) => `${el.n} repeticiones de:   ${el.s}`)
+          .join("\n");
 
-</body>
+        view.innerHTML = result;
+      };
+
+      // ROUTER de eventos
+      document.addEventListener("click", (ev) => {
+        if (ev.target.matches(".count")) count();
+        else if (ev.target.matches(".letter_index")) letter_index();
+        else if (ev.target.matches(".word_index")) word_index();
+        else if (ev.target.matches(".sentence_index")) sentence_index();
+        else if (ev.target.matches(".search_letters")) search_letters();
+        else if (ev.target.matches(".search_words")) search_words();
+        else if (ev.target.matches(".search_sentences")) search_sentences();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Análisis de texto</h1>
+
+    Introduzca un texto para analizarlo:<br />
+    <textarea rows="10" cols="50" id="text" name="text"></textarea>
+    <p>
+      <button class="count">Contar</button>
+      <button class="letter_index">Repeticiones de letras</button>
+      <button class="word_index">Repeticiones de palabras</button>
+      <button class="sentence_index">Repeticiones de frases</button>
+    </p>
+    <p>
+      Buscar repeticiones que contienen:
+      <input type="text" id="search" name="search" />
+      <button class="search_letters">Buscar letras</button>
+      <button class="search_words">Buscar palabras</button>
+      <button class="search_sentences">Buscar frases</button>
+    </p>
+
+    <pre id="view"></pre>
+  </body>
 </html>
-

@@ -96,6 +96,11 @@ var ejsMod6 = [
     title: "Ejercicios&nbsp;opcionales&nbsp;bucles&nbsp;e&nbsp;iteradores",
     desc: "Tema 2. Ejercicios opcionales. Bucle forEach, map, reduce.",
   },
+  {
+    href: "../Modulo6/MOOC_html_mod6-strings_iteradores_regex_entrega-master/index.html",
+    title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
+    desc: "Ejercicio P2P Obligatorio. Expresiones Regulares",
+  },
 ];
 var ejsMod7 = [];
 var ejsMod8 = [];
