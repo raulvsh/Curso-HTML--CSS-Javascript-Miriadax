@@ -6,9 +6,8 @@ class Opponent extends Character {
    * @param game {Game} La instancia del juego al que pertenece el oponente
    */
   constructor(game, width = (OPPONENT_WIDTH * game.width) / 100, height = (OPPONENT_HEIGHT * game.width) / 100,) {
-    //const height = (OPPONENT_HEIGHT * game.width) / 100,
-      //width = (OPPONENT_WIDTH * game.width) / 100,
-      const x = getRandomNumber(game.width - width / 2),
+
+    const x = getRandomNumber(game.width - width / 2),
       y = 0,
       speed = OPPONENT_SPEED,
       myImage = OPPONENT_PICTURE,

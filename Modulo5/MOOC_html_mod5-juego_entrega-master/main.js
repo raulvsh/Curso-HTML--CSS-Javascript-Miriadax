@@ -21,7 +21,6 @@ const OPPONENT_HEIGHT = 5,
   NUM_LIVES = 3,
   BOSS_PICTURE = "assets/jefe.png",
   BOSS_PICTURE_DEAD = "assets/jefe_muerto.png"
-  BOSS_SPEED = 6.4;
   YOU_WIN_PICTURE = "assets/you_win.png";
   BOSS_WIDTH = 20;
   BOSS_HEIGHT = 20;
