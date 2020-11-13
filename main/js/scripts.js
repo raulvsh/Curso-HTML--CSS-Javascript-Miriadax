@@ -87,15 +87,20 @@ var ejsMod5 = [
     href: "../Modulo5/MOOC_html_mod5-juego_entrega-master/index.html",
     title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
     desc: "Ejercicio P2P Obligatorio. Juego de disparos",
-  },  
+  },
 ];
 
-var ejsMod6 = [];
+var ejsMod6 = [
+  {
+    href: "../Modulo6/Ej1_31_MVC_pelis_Array_forEach.html",
+    title: "Ejercicios&nbsp;opcionales&nbsp;bucles&nbsp;e&nbsp;iteradores",
+    desc: "Tema 2. Ejercicios opcionales. Bucle forEach, map, reduce.",
+  },
+];
 var ejsMod7 = [];
 var ejsMod8 = [];
 var ejsMod9 = [];
 var ejsMod10 = [];
-
 
 var modulos = [
   {

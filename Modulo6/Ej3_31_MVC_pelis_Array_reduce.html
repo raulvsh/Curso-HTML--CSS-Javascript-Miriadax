@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      // MODELO
+      var peliculas = [
+        "Superlópez",
+        "E.T.",
+        "Interstellar",
+        "El Club de la Lucha",
+        "Memento",
+      ];
+
+      // VISTA
+      function indexView(pelis) {
+        var i = 0,
+          html;
+        html = pelis.reduce(
+          (html, elem, i, pelis) => (html += `<li>${elem}</li>`),
+          "<ul>"
+        );
+
+        return html + "</ul>";
+      }
+
+      // CONTROLADOR
+      function indexContr() {
+        document.getElementById("main").innerHTML = indexView(peliculas);
+      }
+
+      // EVENTOS
+      document.addEventListener("DOMContentLoaded", (ev) => indexContr());
+    </script>
+  </head>
+
+  <body>
+    <h1>Mis películas</h1>
+    <div id="main"></div>
+  </body>
+</html>
