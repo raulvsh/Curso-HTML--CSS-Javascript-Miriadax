@@ -1,3 +1,7 @@
+
+//importScripts('jquery-3.4.1.min.js');
+
+
 // MODELO
 var ejsMod1 = [
   {
@@ -187,10 +191,27 @@ function indexView(modulos) {
   return html;
 }
 
+
+
 // CONTROLADOR
 function indexContr() {
   document.getElementById("main").innerHTML = indexView(modulos);
 }
 
+function hideContr(){
+  document.getElementById("main").append("asf") ;
+  document.getElementById("main").hide();
+
+  //$("#fecha").html(new Date());
+
+
+
+}
+
 // EVENTOS
 document.addEventListener("DOMContentLoaded", (ev) => indexContr());
+
+      document.addEventListener("click", (ev) => {
+        if (ev.target.matches("#hide"))
+          hideContr();
+      });
