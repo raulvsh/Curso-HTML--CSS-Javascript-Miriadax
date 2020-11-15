@@ -10,7 +10,8 @@
   <script type="text/javascript">
 
     $.ajax( { type:'GET',
-              url: 'https://juan-quemada.neocities.org/ex/pelis.json',
+              url: './21-pelis.json',
+              //url: 'https://juan-quemada.neocities.org/ex/pelis.json',
               success: function(response){
                 $('#res').html(`Respuesta: <br> ${JSON.stringify(response)}`);
               },

@@ -68,7 +68,9 @@
     const init = async () => {
         try {
             url =  localStorage.getItem('url') 
-                || await postInicial('https://api.myjson.com/bins', inicial);
+            //Myjson está caído
+            || await postInicial('https://jsonstorage.net/api/items', inicial);
+               // || await postInicial('https://api.myjson.com/bins', inicial);
             localStorage.setItem('url', url);
 
             pelis = await getPeliculas(url);

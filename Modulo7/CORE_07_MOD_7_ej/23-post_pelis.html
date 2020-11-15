@@ -14,7 +14,10 @@
 
 		let creaPeliculas = async (peliculas) => {
 		
-				let response = await fetch('https://api.myjson.com/bins/', {
+			//Myjson está caído
+			let response = await fetch('https://jsonstorage.net/api/items', {
+
+			//let response = await fetch('https://api.myjson.com/bins/', {
 					method: 'POST', 
 					headers: { "Content-Type": "application/json", },
 					body: JSON.stringify(peliculas)

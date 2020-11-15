@@ -12,7 +12,9 @@
   
       try {
         let response = await fetch(url);
+
         let myJson = await response.json();
+
         show('res', `Respuesta: <br> ${JSON.stringify(myJson)}`);
       } catch (e) {
         show('res', `Error: ${e}`);
@@ -21,9 +23,11 @@
   
     const show = (id, msj) => document.getElementById(id).innerHTML = msj;
   
-    get('https://juan-quemada.neocities.org/ex/pelis.json');
+
+    //get('https://juan-quemada.neocities.org/ex/pelis.json');
+   get('21-pelis.json');
   
-//    get('https://api.myjson.com/bins//a7k7a');
+    //get('https://api.myjson.com/bins//a7k7a');
   </script>  
 </body>
 </html>
