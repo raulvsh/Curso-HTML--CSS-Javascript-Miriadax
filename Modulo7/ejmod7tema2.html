@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head><body>
+   <div id="msj"><div>
+
+   <script type="text/javascript">
+      const insert = (msj) =>
+         document
+         .getElementById("msj")
+         .innerHTML += msj;
+
+const prom_A1 = () =>
+      new Promise( (resolve, reject) => {
+         insert('AA');
+         resolve();
+   });
+
+const prom_A2 = () =>
+      new Promise( (resolve, reject) => {
+         insert('AA');
+         reject();
+   });
+
+const prom_B1 = async () => {
+      insert('BB');
+      return;
+};
+
+const prom_B2 = async () => {
+      insert('BB');
+      throw "err";
+};
+
+const progr = async () => {
+    try {
+        insert("C");
+        await prom_A2 ();
+        insert("D");
+    } catch (y) {
+        insert("E");
+    };
+};
+progr ();
+   </script>
+</body></html>
