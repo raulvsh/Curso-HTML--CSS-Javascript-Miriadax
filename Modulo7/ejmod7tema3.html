@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head><body>
+   <div id="msj"><div>
+
+   <script type="text/javascript">
 const prom_A = (x) =>
     new Promise( (resolve, reject) => {
         console.log('A1');
@@ -14,10 +19,12 @@ const prom_B = async (y) => {
 const progr = async () => {
     try {
         console.log("C");
-        let y = await prom_B (1);
+        let y = await prom_B (2);
         (y===1) ? console.log("D") : console.log("E");
     } catch (y) {
         (y===2) ? console.log("E") : console.log("D");
     };
 };
 progr ();
+</script>
+</body></html>
