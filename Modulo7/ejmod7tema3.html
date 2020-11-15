@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head><body>
+   <div id="msj"><div>
+
+   <script type="text/javascript">
+const prom_A = (x) =>
+    new Promise( (resolve, reject) => {
+        console.log('A1');
+        (x===1) ? resolve(x) : reject(x);
+        console.log('A2');
+    });
+
+const prom_B = async (y) => {
+        console.log('B1');
+        if (y===1) { return y;} else { throw y;};
+        console.log('B2');
+};
+
+const progr = async () => {
+    try {
+        console.log("C");
+        let y = await prom_B (2);
+        (y===1) ? console.log("D") : console.log("E");
+    } catch (y) {
+        (y===2) ? console.log("E") : console.log("D");
+    };
+};
+progr ();
+</script>
+</body></html>
