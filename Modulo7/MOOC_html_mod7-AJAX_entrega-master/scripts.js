@@ -51,7 +51,7 @@ const updateAPI = async (peliculas) => {
   let url = localStorage.URL;
 
   try {
-    const res = await fetch(url, {
+    await fetch(url, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -137,6 +137,7 @@ const showView = (pelicula) => {
              <div class="actions">
                 <button class="index">Volver</button>
              </div>`;*/
+  //window.alert("entro en showvview");
 
   return `
              <p>
@@ -184,12 +185,13 @@ const indexContr = async () => {
 
 const showContr = (i) => {
   // Completar: controlador que muestra la vista showView()
- // mis_peliculas = (await getAPI()) || [];
+   //mis_peliculas = (await getAPI()) || [];
 
-  //let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
+  let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
 
-  //let pelicula = JSON.parse(await getAPI())[i];
-  //document.getElementById("main").innerHTML = "<p>safasfa</p>"; //showView(pelicula);
+  //let pelicula = JSON.parse(mis_peliculas)[i];
+  window.alert("show contr" + pelicula)
+  document.getElementById("main").innerHTML = showView(pelicula);
 };
 
 const newContr = () => {
@@ -212,6 +214,7 @@ const createContr = async () => {
 };
 
 const editContr = (i) => {
+    //$("#main").html(editView(i, mis_peliculas[i]))
   document.getElementById("main").innerHTML = editView(i, mis_peliculas[i]);
 };
 
@@ -219,6 +222,8 @@ const updateContr = async (i) => {
   mis_peliculas[i].titulo = document.getElementById("titulo").value;
   mis_peliculas[i].director = document.getElementById("director").value;
   mis_peliculas[i].miniatura = document.getElementById("miniatura").value;
+  localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+
   await updateAPI(mis_peliculas);
   indexContr();
 };
@@ -227,6 +232,8 @@ const deleteContr = async (i) => {
   // Completar:  controlador que actualiza el modelo borrando la película seleccionada
   // Genera diálogo de confirmación: botón Aceptar devuelve true, Cancel false
   let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+  //let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
+
 
   if (
     confirm(
@@ -236,6 +243,8 @@ const deleteContr = async (i) => {
     mis_peliculas.splice(i, 1);
     localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
   }
+  await updateAPI(mis_peliculas);
+
   indexContr();
 };
 
@@ -255,6 +264,10 @@ document.addEventListener("click", (ev) => {
   if (matchEvent(ev, ".index")) indexContr();
   else if (matchEvent(ev, ".edit")) editContr(myId(ev));
   else if (matchEvent(ev, ".update")) updateContr(myId(ev));
+  else if (matchEvent(ev, ".show")) showContr(myId(ev));
+  else if (matchEvent(ev, ".add")) addContr();
+
+
 });
 
 // Inicialización
