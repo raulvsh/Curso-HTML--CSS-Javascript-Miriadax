@@ -1,0 +1,25 @@
+
+@import 'lib/vars';
+@import 'partials/navigation';
+
+* {
+    border: 1px solid pink;
+
+}
+html,
+body {
+    font-size: $modulo * 2;
+    line-height: $modulo * 3;
+    color: $baseColor;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+h1 {
+    color: $corporateColor;
+}
+
+//
+/*
+
+*/
