@@ -7,15 +7,15 @@
 <script type="text/javascript">
   $(function(){ 
     let img = $('#i1');
-
-    img.on('dblclick', function(){img.attr('src', 'lamp_off.jpg')});
-    img.on('click',    function(){img.attr('src', 'lamp_on.jpg')});
+    img.attr('width', 400);
+    img.on('dblclick', function(){img.attr('src', 'lamp_off.png')});
+    img.on('click',    function(){img.attr('src', 'lamp_on.png')});
   });
 </script>
 </head>
 <body>
   <h1>Eventos</h1>
-  <img src="lamp_off.jpg" id="i1">
+  <img src="lamp_off.png" id="i1">
 </body>
 </html>
 

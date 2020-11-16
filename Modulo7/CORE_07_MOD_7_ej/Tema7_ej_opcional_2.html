@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript">
+
+      // MODELO
+      const inicial = ["Superlópez", "Jurassic Park", "Interstellar"];
+      let pelis; // Modelo con lista de películas
+      let url; // URL al contenedor en myjson.com
+
+      // Primitivas AJAX
+      const postInicial = async (url_inic, inicial) => {
+        let response = await fetch(url_inic, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(inicial),
+        });
+        return (await response.json()).uri;
+      };
+      const getPeliculas = async (url) => {
+        let response = await fetch(url);
+        return await response.json();
+      };
+      const putPeliculas = async (url, pelis) => {
+        let response = await fetch(url, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(pelis),
+        });
+        return await response.json();
+      };
+
+      // VISTAS
+      const showView = (pelis) => {
+        let i = 0,
+          view = "";
+        while (i < pelis.length) {
+          view += `<li> ${pelis[i]}  <button id="delete" data-my-id="${i}">Borrar</button></li>`;
+          i++;
+        }
+        return view;
+      };
+
+      // CONTROLADORES
+      const showContr = () => {
+        $("#lista").html(showView(pelis));
+        $("#url").html(url);
+
+
+        //document.getElementById("lista").innerHTML = showView(pelis);
+        //document.getElementById("url").innerHTML = url;
+      };
+      const addContr = async () => {
+        let p = $("pelicula").val;
+        //let p = document.getElementById("pelicula").value;
+        pelis.push(p);
+        await putPeliculas(url, pelis);
+        showContr();
+      };
+      const resetContr = async () => {
+        pelis = [...inicial];
+        await putPeliculas(url, pelis);
+        showContr();
+      };
+      const deleteContr = async (i) => {
+        pelis.splice(i, 1);
+        await putPeliculas(url, pelis);
+        showContr();
+      };
+
+      // EVENTOS
+      let add = $("add");
+
+      add.on('click', function(){add.append("hola")});
+      $("#reset").on('click', resetContr());
+      $("#delete").on('click', (ev) => deleteContr(ev.target.dataset.myId));
+
+      /*document.addEventListener("click", (ev) => {
+        if (ev.target.matches("#add")) addContr();
+        else if (ev.target.matches("#reset")) resetContr();
+        else if (ev.target.matches("#delete"))
+          deleteContr(ev.target.dataset.myId);
+      });*/
+
+      // INICIALIZACION
+      const init = async () => {
+        try {
+          url =
+            localStorage.getItem("url") ||
+            //Myjson está caído
+            (await postInicial("https://jsonstorage.net/api/items", inicial));
+          // || await postInicial('https://api.myjson.com/bins', inicial);
+          localStorage.setItem("url", url);
+
+          pelis = await getPeliculas(url);
+          showContr();
+        } catch (e) {
+          document.getElementById("lista").innerHTML = `Error: ${e}`;
+        }
+      };
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </head>
+  <body>
+    <h1>Películas</h1>
+    Mis películas favoritas<br />(<span id="url"></span>):
+    <ul id="lista"></ul>
+
+    Añadir película: <input type="text" id="pelicula" /><br />
+    <button id="add">Añadir</button>
+    <button id="reset">Inicializar</button>
+  </body>
+</html>
