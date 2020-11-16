@@ -5,7 +5,6 @@
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
 
     <script type="text/javascript">
-
       // MODELO
       const inicial = ["Superlópez", "Jurassic Park", "Interstellar"];
       let pelis; // Modelo con lista de películas
@@ -49,7 +48,6 @@
         $("#lista").html(showView(pelis));
         $("#url").html(url);
 
-
         //document.getElementById("lista").innerHTML = showView(pelis);
         //document.getElementById("url").innerHTML = url;
       };
@@ -72,18 +70,16 @@
       };
 
       // EVENTOS
-      let add = $("add");
+      //$("#add").on('click', addContr);
+      //$("#reset").on('click', resetContr);
+      //$("#delete").on('click', deleteaddContr);
 
-      add.on('click', function(){add.append("hola")});
-      $("#reset").on('click', resetContr());
-      $("#delete").on('click', (ev) => deleteContr(ev.target.dataset.myId));
-
-      /*document.addEventListener("click", (ev) => {
+      document.addEventListener("click", (ev) => {
         if (ev.target.matches("#add")) addContr();
         else if (ev.target.matches("#reset")) resetContr();
         else if (ev.target.matches("#delete"))
           deleteContr(ev.target.dataset.myId);
-      });*/
+      });
 
       // INICIALIZACION
       const init = async () => {
@@ -101,7 +97,10 @@
           document.getElementById("lista").innerHTML = `Error: ${e}`;
         }
       };
-      document.addEventListener("DOMContentLoaded", init);
+      $(function () {
+        init();
+      });
+      //document.addEventListener("DOMContentLoaded", init);
     </script>
   </head>
   <body>
