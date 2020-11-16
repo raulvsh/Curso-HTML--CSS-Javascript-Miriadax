@@ -156,27 +156,18 @@ const indexContr = async () => {
 };
 
 const showContr = (i) => {
-  //mis_peliculas = (await getAPI()) || [];
-
   let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
 
-  //let pelicula = JSON.parse(mis_peliculas)[i];
-  //window.alert("show contr" + pelicula.titulo + pelicula.director + pelicula.miniatura)
   $("#main").html(showView(pelicula));
-
   //document.getElementById("main").innerHTML = showView(pelicula);
 };
 
 const newContr = () => {
-  // Completar: controlador que muestra la vista newView()
   $("#main").html(newView());
-
   //document.getElementById("main").innerHTML = newView();
 };
 
 const createContr = async () => {
-  // Completar: controlador que crea una película nueva en el modelo guardado en myjson
-  //let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
   let mis_peliculas = (await getAPI()) || [];
 
   mis_peliculas.push({
@@ -186,7 +177,6 @@ const createContr = async () => {
   });
   localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
   await updateAPI(mis_peliculas);
-
   indexContr();
 };
 
@@ -206,13 +196,10 @@ const updateContr = async (i) => {
 };
 
 const deleteContr = async (i) => {
-  // Completar:  controlador que actualiza el modelo borrando la película seleccionada
-  //let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
   let mis_peliculas = (await getAPI()) || [];
 
   if (
     // Genera diálogo de confirmación: botón Aceptar devuelve true, Cancel false
-
     window.confirm(
       `¿Está seguro de que desea borrar la película ${mis_peliculas[i].titulo}?`
     )
@@ -222,19 +209,15 @@ const deleteContr = async (i) => {
   }
 
   await updateAPI(mis_peliculas);
-
   indexContr();
 };
 
 const resetContr = async () => {
-  // Completar:  controlador que reinicia el modelo guardado en myjson con las películas originales
-  //let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
   let mis_peliculas = (await getAPI()) || [];
 
   mis_peliculas = mis_peliculas_iniciales;
   localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
   await updateAPI(mis_peliculas);
-
   indexContr();
 };
 
@@ -244,7 +227,7 @@ const myId = (ev) => Number(ev.target.dataset.myId);
 
 document.addEventListener("click", (ev) => {
   if (matchEvent(ev, ".index")) indexContr();
-  else if (matchEvent(ev, ".edit")) editContr(myId(ev));
+  if (matchEvent(ev, ".edit")) editContr(myId(ev));
   else if (matchEvent(ev, ".update")) updateContr(myId(ev));
   else if (matchEvent(ev, ".show")) showContr(myId(ev));
   else if (matchEvent(ev, ".create")) createContr();

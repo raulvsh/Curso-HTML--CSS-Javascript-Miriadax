@@ -106,7 +106,26 @@ var ejsMod6 = [
     desc: "Ejercicio P2P Obligatorio. Expresiones Regulares",
   },
 ];
-var ejsMod7 = [];
+var ejsMod7 = [  
+  {
+    href: "../Modulo7/CORE_07_MOD_7_ej/10-Prom_reflejos_async_bucle.html",
+    title: "Bucle&nbsp;de&nbsp;test&nbsp;de&nbsp;reflejos",
+    desc: "Tema 3. Ejercicio opcional. Test de reflejos.",
+  },  {
+    href: "../Modulo7/CORE_07_MOD_7_ej/25-pelis_Storage_add_reset_slide.html",
+    title: "Botón&nbsp;delete&nbsp;en&nbsp;películas",
+    desc: "Tema 6. Ejercicio opcional. Añadir botón delete a películas",
+  },  {
+    href: "../Modulo7/CORE_07_MOD_7_ej/Tema7_ej_opcional_2.html",
+    title: "Cambiar Vanilla JavaScript por jQuery",
+    desc: "Tema 7. Ejercicio opcional. Cambiar Vanilla JavaScript por jQuery.",
+  },
+  {
+    href: "../Modulo7/MOOC_html_mod7-AJAX_entrega-master/index.html",
+    title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
+    desc: "Ejercicio P2P Obligatorio. MVC Películas AJAX",
+  },
+];
 var ejsMod8 = [];
 var ejsMod9 = [];
 var ejsMod10 = [];
