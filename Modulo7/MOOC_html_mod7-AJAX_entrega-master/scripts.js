@@ -1,5 +1,4 @@
 // MODELO DE DATOS
-
 let mis_peliculas_iniciales = [
   {
     titulo: "Superlópez",
@@ -36,18 +35,16 @@ const postAPI = async (peliculas) => {
   }
 };
 const getAPI = async () => {
-  // Completar: Llamar a la API para leer la información guardada en myjson a través de la API
   let url = localStorage.URL;
+
   try {
     const res = await fetch(url);
     return await res.json();
   } catch (err) {
     alert("No se ha podido obtener el endpoint.");
-    //alert(err.toString());
   }
 };
 const updateAPI = async (peliculas) => {
-  // Completar: Actualizar la información a través de la API
   let url = localStorage.URL;
 
   try {
@@ -58,15 +55,12 @@ const updateAPI = async (peliculas) => {
       },
       body: JSON.stringify(peliculas),
     });
-    //const { uri } = await res.json();
-    //return uri;
   } catch (err) {
     alert("No se ha podido actualizar el endpoint.");
   }
 };
 
 // VISTAS
-
 const indexView = (peliculas) => {
   let i = 0;
   let view = "";
@@ -125,18 +119,6 @@ const editView = (i, pelicula) => {
 };
 
 const showView = (pelicula) => {
-  // Completar: genera HTML con información de la película
-  // ...
-
-  /*return `
-             <p>
-             
-             
-             </p>
-             <div class="actions">
-                <button class="index">Volver</button>
-             </div>`;*/
-
   return `
              <p>
              <h2>${pelicula.titulo}</h2>
@@ -149,14 +131,6 @@ const showView = (pelicula) => {
 };
 
 const newView = () => {
-  // Completar: genera formulario para crear nuevo quiz
-  // ...
-
-  /*return `<h2>Crear Película</h2>
-                <div class="actions">
-                    <button class="index">Volver</button>
-                </div>`;*/
-
   return `<h2>Crear Película</h2>
                 Introducir  título: <input type="text" id="titulo"> <br>
                 Introducir director:<input type="text" id="director"> <br>
@@ -168,7 +142,6 @@ const newView = () => {
 };
 
 // CONTROLADORES
-
 const initContr = async () => {
   if (!localStorage.URL || localStorage.URL === "undefined") {
     localStorage.URL = await postAPI(mis_peliculas_iniciales);
@@ -178,30 +151,33 @@ const initContr = async () => {
 
 const indexContr = async () => {
   mis_peliculas = (await getAPI()) || [];
-  document.getElementById("main").innerHTML = await indexView(mis_peliculas);
+  $("#main").html(await indexView(mis_peliculas));
+  //document.getElementById("main").innerHTML = await indexView(mis_peliculas);
 };
 
 const showContr = (i) => {
-  // Completar: controlador que muestra la vista showView()
-   //mis_peliculas = (await getAPI()) || [];
+  //mis_peliculas = (await getAPI()) || [];
 
   let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
 
   //let pelicula = JSON.parse(mis_peliculas)[i];
   //window.alert("show contr" + pelicula.titulo + pelicula.director + pelicula.miniatura)
-  $("#main").html(showView(pelicula))
+  $("#main").html(showView(pelicula));
 
   //document.getElementById("main").innerHTML = showView(pelicula);
 };
 
 const newContr = () => {
   // Completar: controlador que muestra la vista newView()
-  document.getElementById("main").innerHTML = newView();
+  $("#main").html(newView());
+
+  //document.getElementById("main").innerHTML = newView();
 };
 
 const createContr = async () => {
   // Completar: controlador que crea una película nueva en el modelo guardado en myjson
-  let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+  //let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+  let mis_peliculas = (await getAPI()) || [];
 
   mis_peliculas.push({
     titulo: document.getElementById("titulo").value,
@@ -215,8 +191,8 @@ const createContr = async () => {
 };
 
 const editContr = (i) => {
-    //$("#main").html(editView(i, mis_peliculas[i]))
-  document.getElementById("main").innerHTML = editView(i, mis_peliculas[i]);
+  $("#main").html(editView(i, mis_peliculas[i]));
+  //document.getElementById("main").innerHTML = editView(i, mis_peliculas[i]);
 };
 
 const updateContr = async (i) => {
@@ -231,19 +207,20 @@ const updateContr = async (i) => {
 
 const deleteContr = async (i) => {
   // Completar:  controlador que actualiza el modelo borrando la película seleccionada
-  // Genera diálogo de confirmación: botón Aceptar devuelve true, Cancel false
-  let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
-  //let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
-
+  //let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+  let mis_peliculas = (await getAPI()) || [];
 
   if (
-    confirm(
+    // Genera diálogo de confirmación: botón Aceptar devuelve true, Cancel false
+
+    window.confirm(
       `¿Está seguro de que desea borrar la película ${mis_peliculas[i].titulo}?`
     )
   ) {
     mis_peliculas.splice(i, 1);
     localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
   }
+
   await updateAPI(mis_peliculas);
 
   indexContr();
@@ -251,7 +228,9 @@ const deleteContr = async (i) => {
 
 const resetContr = async () => {
   // Completar:  controlador que reinicia el modelo guardado en myjson con las películas originales
-  let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+  //let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+  let mis_peliculas = (await getAPI()) || [];
+
   mis_peliculas = mis_peliculas_iniciales;
   localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
   await updateAPI(mis_peliculas);
@@ -271,12 +250,11 @@ document.addEventListener("click", (ev) => {
   else if (matchEvent(ev, ".create")) createContr();
   else if (matchEvent(ev, ".new")) newContr();
   else if (matchEvent(ev, ".reset")) resetContr();
-  else if (matchEvent(ev, ".delete")) deleteContr();
-
-
-
+  else if (matchEvent(ev, ".delete")) deleteContr(myId(ev));
 });
 
 // Inicialización
-$(function(){initContr()})
+$(function () {
+  initContr();
+});
 //document.addEventListener("DOMContentLoaded", initContr);
