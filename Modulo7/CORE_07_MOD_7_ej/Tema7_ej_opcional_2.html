@@ -52,7 +52,7 @@
         //document.getElementById("url").innerHTML = url;
       };
       const addContr = async () => {
-        let p = $("pelicula").val;
+        let p = $("#pelicula").val();
         //let p = document.getElementById("pelicula").value;
         pelis.push(p);
         await putPeliculas(url, pelis);
@@ -73,12 +73,29 @@
       //$("#add").on('click', addContr);
       //$("#reset").on('click', resetContr);
       //$("#delete").on('click', deleteaddContr);
+      const myId = (ev) => Number(ev.target.dataset.myId);
 
+      $(function () {
+        $("#add").on("click", function () {
+          addContr();
+          $("#add").append(" Add activado");
+        });
+        $("#reset").on("click", function () {
+          resetContr();
+          $("#reset").append(" Reset activado");
+        });
+        /*$("#delete").on("click", function() {
+          //deleteContr(ev.target.dataset.myId);
+          $("#delete").append("hola");
+        });*/
+      });
+
+      //Para el método delete no he conseguido hacerlo con jQuery
       document.addEventListener("click", (ev) => {
-        if (ev.target.matches("#add")) addContr();
-        else if (ev.target.matches("#reset")) resetContr();
-        else if (ev.target.matches("#delete"))
-          deleteContr(ev.target.dataset.myId);
+        // if (ev.target.matches("#add")) addContr();
+        //else if (ev.target.matches("#reset")) resetContr();
+        //else if (ev.target.matches("#delete"))
+        if (ev.target.matches("#delete")) deleteContr(ev.target.dataset.myId);
       });
 
       // INICIALIZACION
