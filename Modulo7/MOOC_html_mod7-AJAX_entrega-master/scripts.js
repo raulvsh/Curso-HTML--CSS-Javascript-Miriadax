@@ -59,7 +59,6 @@ const updateAPI = async (peliculas) => {
       body: JSON.stringify(peliculas),
     });
     //const { uri } = await res.json();
-    //window.alert(uri);
     //return uri;
   } catch (err) {
     alert("No se ha podido actualizar el endpoint.");
@@ -137,7 +136,6 @@ const showView = (pelicula) => {
              <div class="actions">
                 <button class="index">Volver</button>
              </div>`;*/
-  //window.alert("entro en showvview");
 
   return `
              <p>
@@ -190,8 +188,10 @@ const showContr = (i) => {
   let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
 
   //let pelicula = JSON.parse(mis_peliculas)[i];
-  window.alert("show contr" + pelicula)
-  document.getElementById("main").innerHTML = showView(pelicula);
+  //window.alert("show contr" + pelicula.titulo + pelicula.director + pelicula.miniatura)
+  $("#main").html(showView(pelicula))
+
+  //document.getElementById("main").innerHTML = showView(pelicula);
 };
 
 const newContr = () => {
@@ -209,6 +209,7 @@ const createContr = async () => {
     miniatura: document.getElementById("miniatura").value,
   });
   localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+  await updateAPI(mis_peliculas);
 
   indexContr();
 };
@@ -253,6 +254,8 @@ const resetContr = async () => {
   let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
   mis_peliculas = mis_peliculas_iniciales;
   localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+  await updateAPI(mis_peliculas);
+
   indexContr();
 };
 
@@ -265,11 +268,15 @@ document.addEventListener("click", (ev) => {
   else if (matchEvent(ev, ".edit")) editContr(myId(ev));
   else if (matchEvent(ev, ".update")) updateContr(myId(ev));
   else if (matchEvent(ev, ".show")) showContr(myId(ev));
-  else if (matchEvent(ev, ".add")) addContr();
+  else if (matchEvent(ev, ".create")) createContr();
+  else if (matchEvent(ev, ".new")) newContr();
+  else if (matchEvent(ev, ".reset")) resetContr();
+  else if (matchEvent(ev, ".delete")) deleteContr();
+
 
 
 });
 
 // Inicialización
-//$(function(){initContr()});
-document.addEventListener("DOMContentLoaded", initContr);
+$(function(){initContr()})
+//document.addEventListener("DOMContentLoaded", initContr);
