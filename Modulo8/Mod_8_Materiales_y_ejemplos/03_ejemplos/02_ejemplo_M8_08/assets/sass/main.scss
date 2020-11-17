@@ -1,0 +1,273 @@
+@import 'lib/reset';
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+$module: .5rem;
+$color_bn_100: #434343;
+$color_bn_80: #797979;
+$color_pink: #FD96D4;
+
+/**************************************/
+// Mixin para media queries
+@mixin mq ($bp: 720px) {
+    @media screen and (max-width: #{$bp}) {
+        @content;
+    }
+}
+
+
+html,
+body {
+    font-size: 15px;
+    line-height: $module * 3;
+    font-family: 'Roboto', sans-serif;
+    color: $color_bn_80;
+    height: 100vh;
+
+    @include mq($bp: 500px) {
+        font-size: 16px;
+        height: auto;
+    }
+}
+
+
+
+
+
+/**************************************/
+// Solo layout
+.grid_container {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    grid-template-rows: auto auto 1fr auto;
+    height: 100vh;
+
+    @include mq($bp: 500px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-auto-rows: auto;
+        height: auto;
+    }
+
+    .text {
+        grid-area: 1 / 2 / span 1 / span 1;
+
+        @include mq($bp: 500px) {
+            grid-area: initial;
+        }
+    }
+
+    .picture {
+        grid-area: 1 / 1 / span 4 / span 1;
+
+        @include mq($bp: 500px) {
+            grid-area: initial;
+        }
+
+    }
+
+    .ctas {
+        grid-area: 2 / 2 / span 1 / span 1;
+        align-self: center;
+
+        @include mq($bp: 500px) {
+            grid-area: initial;
+
+        }
+    }
+
+    .menu {
+        grid-area: 4 / 2 / span 1 / span 1;
+        align-self: center;
+
+        @include mq($bp: 500px) {
+            grid-area: initial;
+
+        }
+    }
+
+    .modal {
+        grid-area: 1 / 1 / -1 / -1;
+        z-index: 2;
+    }
+}
+
+
+
+
+
+/**************************************/
+// Text
+.text {
+    padding: 2rem;
+
+    @include mq($bp: 500px) {
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .content_text {
+        @include mq($bp: 500px) {
+            display: none;
+        }
+    }
+}
+
+
+/**************************************/
+// Picture
+.picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ECECEC;
+}
+
+/**************************************/
+// Ctas y component buttons
+.ctas {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 2rem;
+
+    @include mq($bp: 500px) {
+        padding: 2rem 2rem 1rem;
+    }
+}
+
+.button {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: .5rem 2rem;
+    border-radius: 3px;
+    text-align: center;
+
+    &_primary {
+        background-color: $color_pink;
+        color: white;
+        border: 2px solid $color_pink;
+    }
+
+    &_secondary {
+        background-color: $color_bn_80;
+        color: white;
+    }
+
+    &_secondary_outlined {
+        border: 2px solid $color_pink;
+        color: $color_bn_80;
+        background-color: transparent;
+    }
+
+    &.block_level {
+        display: block;
+    }
+}
+
+/**************************************/
+// Component MENU ITEM
+.menu_items {
+    padding: 2rem 2rem;
+    list-style: none;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+
+    @include mq($bp: 500px) {
+        padding: 1rem 2rem;
+    }
+}
+
+.menu_item {
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .menu_item_icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #989898;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-bottom: 0.5rem;
+        background-color: #f2f2f2;
+    }
+
+    .menu_item_link {
+        text-decoration: underline;
+        font-size: .87rem;
+        color: #acacac;
+    }
+
+    &:hover {
+        a {
+            .menu_item_icon {
+                background-color: #ebe8e8;
+                color: #808080;
+            }
+
+            .menu_item_link {
+                color: #9a9a9a;
+            }
+        }
+    }
+}
+
+
+/**************************************/
+// Component modal
+.modal {
+    background-color: rgba(black, .7);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+
+    &.opened {
+        visibility: visible;
+    }
+
+    .modal_holder {
+        background-color: #fff;
+        padding: 2rem;
+        width: auto;
+
+        @include mq($bp: 500px) {
+            width: 70%;
+        }
+
+        .modal_title {
+            margin-bottom: 2rem;
+        }
+
+        .modal_ctas {
+            a {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    @include mq($bp: 500px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
