@@ -1,0 +1,23 @@
+{
+"name":"Shooter Game",
+"short_name": "Shooter",
+"icons":[
+    {"src": "img/bueno_muerto.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/bueno.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/fondo.jpf", "sizes":"192x192", "type":"image/jpg"},
+    {"src": "img/game_over.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/jefe_muerto.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/jefe.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/malo_muerto.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/shot1.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/shot2.png", "sizes":"192x192", "type":"image/png"},
+    {"src": "img/you_win.png", "sizes":"192x192", "type":"image/png"}
+],
+"start_url": "./index.html",
+"display": "standalone","background_color": "#333333",
+"theme_color":"#6200ee"
+
+
+
+
+}
