@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Minecraft";
+  src: url("./fonts/Minecraft.ttf") format("truetype");
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  background-image: url("./assets/fondo.jpg");
+  background-size: cover;
+}
+
+.Opponent {
+  animation: rotation 3s infinite linear;
+  -webkit-animation: rotation 3s infinite linear;
+}
+
+.paused .Opponent {
+  animation: none;
+  -webkit-animation: none;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+.gamebutton {
+  font-family: "Minecraft";
+  border: solid 1px white;
+  background: transparent;
+  color: cyan;
+  padding: 10px 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+#scoreli,
+#livesli {
+  list-style: none;
+  color: cyan;
+  font-family: "Minecraft";
+}
