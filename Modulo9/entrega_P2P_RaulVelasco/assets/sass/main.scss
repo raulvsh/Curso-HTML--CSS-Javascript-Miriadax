@@ -10,11 +10,95 @@
 @import "partials/layout";
 @import "partials/modals";
 
-
-
-
 * {
     &:not(a) {
-        border: 1px solid pink;
+        //border: 1px solid pink;
     }
+}
+
+#menu_page,
+#settings_page,
+#leaderboard_page {
+    // background-color: yellow;
+    display: flex;
+    flex-direction: column;
+
+    header {
+        width: 100%;
+    }
+
+    .hscore {
+        width: 100%;
+    }
+
+    .main,
+    .slider,
+    .lboard {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    footer {
+        width: 100%;
+    }
+}
+
+#main_page {
+    display: flex;
+    flex-direction: column;
+
+    .ui {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .game {
+        flex-basis: 100%;
+        width: 100%;
+        background-image: url("../img/fondo.jpg");
+    }
+}
+
+.footer a {
+    border: 2px solid pink;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+}
+.foot_navigation li {
+    //border: 2px solid pink;
+    //border-radius: 3px;
+    //padding: 10px;
+    //margin: 3px;
+    list-style-type: none;
+}
+.foot_navigation li a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.modal_window {
+    background-color: white;
+}
+.btn {
+    color: rgb(95, 190, 253);
+    border: 2px solid pink;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 3px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#init_game{
+    margin-left: 42px;
 }
