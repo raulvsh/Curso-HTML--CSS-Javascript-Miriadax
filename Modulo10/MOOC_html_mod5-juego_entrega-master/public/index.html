@@ -7,7 +7,6 @@
     <meta lang="es" />
     <meta name="description" content="Juego de disparos offline" />
     <meta name="author" content="Raúl Velasco Salinas" />
-    <meta name="viewport" content="width=device-width, initial-" />
     <meta name="theme-color" content="#6200ee" />
     <meta name="apple-mobile-web-app-title" content="Shooter Game" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -30,7 +29,9 @@
     <button id="reset" class="gamebutton" onclick="this.blur();">
       NUEVA PARTIDA
     </button>
-    <ul>
+    <button id="butInstall" class="gamebutton" aria-label="Install" >INSTALAR APLICACIÓN</button>
+
+      <ul>
       <li id="scoreli"></li>
       <li id="livesli"></li>
     </ul>
@@ -44,5 +45,6 @@
             })
           };
     </script>
+    <script src="./assets/install.js"></script>
   </body>
 </html>
