@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 18">
+  <g class="v_01">
+    <path fill="#000" d="M0 15.23h22V18H0v-2.77z" class="b_line"/>
+    <path fill="#000" d="M17.875 0h-2.75v13.846h2.75V0z" class="line_04"/>
+    <path fill="#000" d="M13.75 8.308H11v5.538h2.75V8.308z" class="line_03"/>
+    <path fill="#000" d="M9.625 4.154h-2.75v9.692h2.75V4.154z" class="line_02"/>
+    <path fill="#000" d="M5.5 9.692H2.75v4.154H5.5V9.692z" class="line_01"/>
+  </g>
+</svg>
