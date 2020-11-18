@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script type="text/javascript" src="data.json"></script>
+    <title>Scroll animado</title>
+</head>
+<body>
+    <img src="winners.png" alt="Ganadores" class="rellax" data-rellax-speed="-3">
+    <div class="container">
+        <h1 class="rellax" data-rellax-speed="7">Ranking usuarios</h1>
+        <ul>            
+           <!-- Usuarios de data.json-->
+        </ul>        
+    </div>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+</html>
+<script>
+    fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        var datos = data;       
+        var list = document.querySelector('ul');
+        list.innerHTML = datos.map(function (datos) {
+            return '<li data-aos="fade-up">' + datos.first_name + '</li>';
+        }).join('') ;
+    });
+
+    var rellax = new Rellax('.rellax'); 
+    AOS.init();
+</script>

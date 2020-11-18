@@ -1,0 +1,51 @@
+/*
+STYLES
+========================================
+*/
+
+* {
+    /* border: 1px solid tomato; */
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Source Sans Pro", "Helvetica", "Arial", Arial, sans-serif;
+    color: #222;
+    font-size: 16px;
+    line-height: 1.4;
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+}
+
+
+
+svg.whatsapp {
+    width: 100px;
+    height: 100px;
+}
+
+svg.whatsapp .bg {
+    fill: #1bd741;
+    fill-opacity: 1;
+    stroke: #07a828;
+    stroke-width: 7px;
+}
+
+svg.whatsapp .circle {
+    fill: white;
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 300ms ease 100ms;
+}
+
+svg.whatsapp .tel {
+    fill: white;
+    transform: translateY(0px);
+    opacity: 1;
+}

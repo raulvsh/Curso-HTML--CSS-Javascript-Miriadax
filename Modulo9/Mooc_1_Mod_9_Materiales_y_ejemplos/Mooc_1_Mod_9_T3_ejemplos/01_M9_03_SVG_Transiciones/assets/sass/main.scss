@@ -1,0 +1,156 @@
+@import 'lib/vars';
+@import 'lib/mixins';
+@import 'lib/reboot';
+@import 'lib/fontawesome/font-awesome';
+@import 'lib/fontface';
+@import 'lib/keyframes';
+
+
+$corporateColor: tomato;
+
+* {
+    // border: 1px solid $corporateColor;
+}
+
+html,
+body {
+    font-size: $base * 2;
+    font-family: $font_family_base;
+    line-height: $base * 3;
+    color: $body_color;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.app {
+    display: flex;
+    max-width: 800px;
+
+    >* {
+        margin: 0 5rem;
+    }
+
+    svg {
+        height: 50px;
+    }
+}
+
+
+
+.vector_01 {
+    .b_line {
+        transform-origin: 20% 88%;
+        transform: scaleY(0.5);
+        transition: transform 300ms ease 0ms
+    }
+
+    .line_04 {
+        transform-origin: 16% 77%;
+        transform: scaleY(1.2);
+        transition: transform 300ms ease 0ms
+    }
+
+    .line_03 {
+        transform-origin: 16% 77%;
+        transform: scaleY(1.2);
+        transition: transform 300ms ease 50ms
+    }
+
+    .line_02 {
+        transform-origin: 16% 77%;
+        transform: scaleY(1.2);
+        transition: transform 300ms ease 100ms
+    }
+
+    .line_01 {
+        transform-origin: 16% 77%;
+        transform: scaleY(1.2);
+        transition: transform 300ms ease 150ms
+    }
+
+    &:hover {
+        .b_line {
+            transform: scaleY(1.2);
+            transition: transform 500ms ease 350ms
+        }
+
+        .line_04 {
+            transform: scaleY(0.3);
+            transition: transform 300ms ease 200ms
+        }
+
+        .line_03 {
+            transform: scaleY(2.2);
+            transition: transform 300ms ease 150ms
+        }
+
+        .line_02 {
+            transform: scaleY(0.7);
+            transition: transform 300ms ease 100ms
+        }
+
+        .line_01 {
+            transform: scaleY(2.8);
+            transition: transform 300ms ease 50ms
+        }
+    }
+}
+
+
+.vector_02 {
+    path {
+        transform-origin: center center;
+        transform: rotate(0deg) scale(1);
+        transition: transform 400ms ease-in-out;
+    }
+
+    &:hover {
+        path {
+            transform: rotate(240deg) scale(.9);
+            transition: transform 400ms ease-in-out;
+        }
+    }
+}
+
+
+.vector_03 {
+    g {
+        transform: scale(.9);
+        transform-origin: center center;
+    }
+
+    .pencil {
+        transform: translateX(200%);
+        transition: transform 400ms ease-in-out;
+        fill: #333;
+
+        path {
+            fill: inherit;
+        }
+    }
+
+    .bg {
+        stroke: #333;
+        stroke-width: 1.4px;
+        stroke-dasharray: 390%;
+        stroke-dashoffset: 390%;
+        transition: all 400ms ease-in-out;
+    }
+
+    &:hover {
+        .pencil {
+            transform: translateX(0%);
+            transition: transform 400ms ease-in-out;
+            fill: #333;
+        }
+
+        .bg {
+            fill: white;
+            stroke-dashoffset: 0%;
+            transition: all 400ms ease-in-out;
+        }
+    }
+}
