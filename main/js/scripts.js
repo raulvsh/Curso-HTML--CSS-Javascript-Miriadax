@@ -126,9 +126,68 @@ var ejsMod7 = [
     desc: "Ejercicio P2P Obligatorio. MVC Películas AJAX",
   },
 ];
-var ejsMod8 = [];
-var ejsMod9 = [];
-var ejsMod10 = [];
+var ejsMod8 = [
+  {
+    href: "../Modulo8/Prototipos/Pagina_personal.fig",
+    title: "Página&nbsp;personal",
+    desc: "Tema 3. Ejercicio opcional. Página personal",
+  },
+  {
+    href: "../Modulo8/Prototipos/Prototipo_juego_web.fig",
+    title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
+    desc: "Ejercicio P2P Obligatorio. Prototipo juego online",
+  },
+
+];
+var ejsMod9 = [
+  {
+    href: "../main/index.html",
+    //href: "../Modulo8/Prototipos/Pagina personal.fig",
+    title: "Transiciones&nbsp;y&nbsp;animaciones&nbsp;CSS",
+    desc: "Tema 1. Ejercicios opcionales. Transiciones y animaciones CSS.",
+  },
+  {
+    href: "../main/index.html",
+
+   // href: "../Modulo8/Prototipos/Prototipo juego web.fig",
+    title: "Gráficos&nbsp;Vectoriales&nbsp;en&nbsp;HTML&nbsp;y&nbsp;CSS",
+    desc: "Tema 2. Ejercicios opcionales. Gráficos Vectoriales en HTML y CSS.",
+  },
+  {
+    href: "../main/index.html",
+
+    //href: "../Modulo8/Prototipos/Prototipo juego web.fig",
+    title: "Gráficos&nbsp;Vectoriales&nbsp;y&nbsp;uso&nbsp;de&nbsp;transiciones",
+    desc: "Tema 3. Ejercicios opcionales. Gráficos Vectoriales y uso de transiciones.",
+  },
+  {
+    href: "../main/index.html",
+
+    //href: "../Modulo8/Prototipos/Prototipo juego web.fig",
+    title: "Single&nbsp;page&nbsp;con&nbsp;swiper.",
+    desc: "Tema 5. Ejercicio opcional. Single page con swiper.",
+  },
+  {
+    href: "../Modulo9/entrega_P2P_RaulVelasco/index.html",
+    title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
+    desc: "Ejercicio P2P Obligatorio. Juego online de disparos single page",
+  },
+
+];
+var ejsMod10 = [
+  {
+    href: "../Modulo10/MOOC_html_mod10-PWA_ejemplo-master/public/index.html",
+    title: "PWA&nbsp;películas.",
+    desc: "Ejercicio opcional. PWA películas.",
+  },
+
+  {
+    href: "../Modulo10/MOOC_html_mod5-juego_entrega-master/public/index.html",
+    title: "Ejercicio&nbsp;P2P&nbsp;Obligatorio",
+    desc: "Ejercicio P2P Obligatorio. Juego online de disparos PWA",
+  },
+
+];
 
 var modulos = [
   {
